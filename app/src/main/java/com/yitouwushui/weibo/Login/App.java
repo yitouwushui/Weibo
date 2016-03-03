@@ -1,0 +1,24 @@
+package com.yitouwushui.weibo.Login;
+
+/**
+ * Created by yitouwushui on 2016/3/3.
+ */
+public class App {
+
+    public static final String URL = "https://api.weibo.com/oauth2/authorize?client_id=3078393470&redirect_uri=https://api.weibo.com/oauth2/default.html";
+
+    //微博开发者App Key
+    public static final String CLIENT_ID = "3078393470";
+
+    //微博开发者App Secret
+    public static final String CLIENT_SECRET = "fa341b31035872b7ee9657288ba2dc4f";
+
+    //grant_type
+    public static final String GRANT_TYPE = "authorization_code";
+
+    //回调地址
+    public static final String REDIRECTURL = "https://api.weibo.com/oauth2/default.html";
+
+    //令牌
+    public static final String ACCESS_TOKEN = "access_token";
+}
