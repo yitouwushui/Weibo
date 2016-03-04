@@ -28,6 +28,8 @@ public class DiscoveryFragment extends Fragment {
     WeiboAdapter weiboAdapter;
     List<String> discoveryData = new ArrayList<>();
 
+//    https://api.weibo.com/2/statuses/public_timeline.json
+
     public DiscoveryFragment() {
         // Required empty public constructor
     }
@@ -36,7 +38,7 @@ public class DiscoveryFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_first_page, container, false);
+        View v = inflater.inflate(R.layout.fragment_discovery, container, false);
         listView_discovery = (ListView) v.findViewById(R.id.listView_discovery);
         if (savedInstanceState == null) {
             for (int i = 0; i <= 10; i++) {

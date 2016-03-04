@@ -1,8 +1,6 @@
-package com.yitouwushui.weibo.account;
+package com.yitouwushui.weibo.entity;
 
-/**
- * Created by lenovo on 2016/1/22.
- */
+
 public class Visible {
     private int type;
     private int list_id;

@@ -16,9 +16,7 @@ import com.yitouwushui.weibo.R;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by yitouwushui on 2016/2/29.
- */
+
 public class WeiboAdapter extends BaseAdapter {
 
     Context context;
@@ -50,14 +48,12 @@ public class WeiboAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        Log.e("xitong",String.valueOf(position));
+//        Log.e("xitong",String.valueOf(position));
         Holder holder;
-//        ImageViewIconListener imgListener;
         ButtonListener buttonListener;
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.weibo_item, parent, false);
             holder = new Holder(convertView);
-//            imgListener = new ImageViewIconListener();
             buttonListener = new ButtonListener();
             holder.img_icon.setOnClickListener(buttonListener);
             holder.img_collect.setOnClickListener(buttonListener);

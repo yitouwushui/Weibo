@@ -1,9 +1,11 @@
-package com.yitouwushui.weibo.account;
+package com.yitouwushui.weibo.entity;
 
-/**
- * Created by lenovo on 2016/1/22.
- */
-public class User {
+import com.orm.SugarRecord;
+
+import java.io.Serializable;
+
+
+public class User extends SugarRecord implements Serializable  {
     private long id;
     private String idstr;
     private String screen_name;
@@ -53,7 +55,7 @@ public class User {
     private int credit_score;
     private int urank;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

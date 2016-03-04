@@ -1,10 +1,8 @@
-package com.yitouwushui.weibo.account;
+package com.yitouwushui.weibo.entity;
 
 import android.text.TextUtils;
 
-/**
- * Created by lenovo on 2016/1/22.
- */
+
 public class PicUrls {
     private static final String BMIDDLE_URL = "http://ww3.sinaimg.cn/bmiddle";
     private static final String ORIGINAL_URL = "http://ww3.sinaimg.cn/large";

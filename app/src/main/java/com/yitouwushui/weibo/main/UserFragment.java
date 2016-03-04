@@ -1,4 +1,4 @@
-package com.yitouwushui.weibo.account;
+package com.yitouwushui.weibo.main;
 
 
 import android.os.Bundle;

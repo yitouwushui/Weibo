@@ -24,6 +24,8 @@ public class FirstPageFragment extends Fragment{
     WeiboAdapter weiboAdapter;
     List<String> fristData = new ArrayList<>();
 
+//    https://api.weibo.com/2/statuses/user_timeline/ids.json
+
     public FirstPageFragment() {
         // Required empty public constructor
     }
