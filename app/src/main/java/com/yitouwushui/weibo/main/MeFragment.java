@@ -1,16 +1,18 @@
 package com.yitouwushui.weibo.main;
 
-
-import android.graphics.Bitmap;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
+import com.yitouwushui.weibo.Login.App;
 import com.yitouwushui.weibo.R;
 import com.yitouwushui.weibo.entity.User;
 
@@ -20,7 +22,7 @@ import com.yitouwushui.weibo.entity.User;
  */
 public class MeFragment extends Fragment {
 
-    ImageView img_icon;
+    SimpleDraweeView img_icon;
     TextView text_name;
     TextView text_introduce;
     Button button_weibo;
@@ -39,8 +41,15 @@ public class MeFragment extends Fragment {
         // 初始化
         init(v);
 
-        User user = User.findById(User.class,1);
+        User user;
+        Log.e("me!!!!!!!!!!!!!","---------------");
+        Intent intent = getActivity().getIntent();
+        Bundle bundle = intent.getExtras();
+        user = (User) bundle.getSerializable("user");
+        Log.e("-------------333333333", user.toString());
+//        user = User.findById(User.class,1);
 
+        img_icon.setImageURI(Uri.parse(user.getAvatar_large()));
         text_name.setText(user.getScreen_name());
         text_introduce.setText(user.getDescription());
         button_weibo.setText(user.getStatuses_count() + "\n微博");
@@ -50,7 +59,7 @@ public class MeFragment extends Fragment {
     }
 
     private void init(View v) {
-        img_icon = (ImageView) v.findViewById(R.id.imageViewIcon);
+        img_icon = (SimpleDraweeView) v.findViewById(R.id.imageViewIcon);
         text_name = (TextView) v.findViewById(R.id.textViewName);
         text_introduce = (TextView) v.findViewById(R.id.textViewIntroduce);
         button_weibo = (Button) v.findViewById(R.id.button_weibo);

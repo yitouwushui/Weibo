@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.yitouwushui.weibo.R;
 import com.yitouwushui.weibo.main.FirstPageFragment;
 
@@ -24,21 +25,21 @@ public class WeiboPageActivity extends AppCompatActivity implements MyScrollView
     RelativeLayout relayout;
 
     // 微博信息控件
-    ImageView img_icon;
+    SimpleDraweeView img_icon;
     ImageView img_collect;
     TextView text_name;
     TextView text_time;
     TextView text_device;
     TextView text_word;
-    ImageView img_weibo1;
-    ImageView img_weibo2;
-    ImageView img_weibo3;
-    ImageView img_weibo4;
-    ImageView img_weibo5;
-    ImageView img_weibo6;
-    ImageView img_weibo7;
-    ImageView img_weibo8;
-    ImageView img_weibo9;
+    SimpleDraweeView img_weibo1;
+    SimpleDraweeView img_weibo2;
+    SimpleDraweeView img_weibo3;
+    SimpleDraweeView img_weibo4;
+    SimpleDraweeView img_weibo5;
+    SimpleDraweeView img_weibo6;
+    SimpleDraweeView img_weibo7;
+    SimpleDraweeView img_weibo8;
+    SimpleDraweeView img_weibo9;
     RelativeLayout reLayout_weibo_tra;
     RelativeLayout reLayout_weibo_com;
     RelativeLayout reLayout_weibo_zan;
@@ -65,21 +66,21 @@ public class WeiboPageActivity extends AppCompatActivity implements MyScrollView
         tabLayout.addTab(tabLayout.newTab().setText("评论"), 1);
         tabLayout.addTab(tabLayout.newTab().setText("赞"), 2);
 
-        img_icon = (ImageView) findViewById(R.id.img_wbPage_icon);
+        img_icon = (SimpleDraweeView) findViewById(R.id.img_wbPage_icon);
         img_collect = (ImageView) findViewById(R.id.img_wbPage_collect);
         text_name = (TextView) findViewById(R.id.text_wbPage_name);
         text_time = (TextView) findViewById(R.id.text_wbPage_time);
         text_device = (TextView) findViewById(R.id.text_wbPage_device);
         text_word = (TextView) findViewById(R.id.text_wbPage_word);
-        img_weibo1 = (ImageView) findViewById(R.id.img_wbPage1);
-        img_weibo2 = (ImageView) findViewById(R.id.img_wbPage2);
-        img_weibo3 = (ImageView) findViewById(R.id.img_wbPage3);
-        img_weibo4 = (ImageView) findViewById(R.id.img_wbPage4);
-        img_weibo5 = (ImageView) findViewById(R.id.img_wbPage5);
-        img_weibo6 = (ImageView) findViewById(R.id.img_wbPage6);
-        img_weibo7 = (ImageView) findViewById(R.id.img_wbPage7);
-        img_weibo8 = (ImageView) findViewById(R.id.img_wbPage8);
-        img_weibo9 = (ImageView) findViewById(R.id.img_wbPage9);
+        img_weibo1 = (SimpleDraweeView) findViewById(R.id.img_wbPage1);
+        img_weibo2 = (SimpleDraweeView) findViewById(R.id.img_wbPage2);
+        img_weibo3 = (SimpleDraweeView) findViewById(R.id.img_wbPage3);
+        img_weibo4 = (SimpleDraweeView) findViewById(R.id.img_wbPage4);
+        img_weibo5 = (SimpleDraweeView) findViewById(R.id.img_wbPage5);
+        img_weibo6 = (SimpleDraweeView) findViewById(R.id.img_wbPage6);
+        img_weibo7 = (SimpleDraweeView) findViewById(R.id.img_wbPage7);
+        img_weibo8 = (SimpleDraweeView) findViewById(R.id.img_wbPage8);
+        img_weibo9 = (SimpleDraweeView) findViewById(R.id.img_wbPage9);
         reLayout_weibo_tra = (RelativeLayout) findViewById(R.id.re_wbPage_tra);
         reLayout_weibo_com = (RelativeLayout) findViewById(R.id.re_wbPage_com);
         reLayout_weibo_zan = (RelativeLayout) findViewById(R.id.re_wbPage_zan);

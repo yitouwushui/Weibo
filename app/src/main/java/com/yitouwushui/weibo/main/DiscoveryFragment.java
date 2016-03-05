@@ -11,7 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.yitouwushui.weibo.R;
-import com.yitouwushui.weibo.weibo.WeiboAdapter;
+import com.yitouwushui.weibo.entity.Status;
 import com.yitouwushui.weibo.weibo.WeiboPageActivity;
 
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ public class DiscoveryFragment extends Fragment {
 
     ListView listView_discovery;
     WeiboAdapter weiboAdapter;
-    List<String> discoveryData = new ArrayList<>();
+    ArrayList<Status> discoveryData = new ArrayList<>();
 
 //    https://api.weibo.com/2/statuses/public_timeline.json
 
@@ -40,17 +40,24 @@ public class DiscoveryFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_discovery, container, false);
         listView_discovery = (ListView) v.findViewById(R.id.listView_discovery);
-        if (savedInstanceState == null) {
-            for (int i = 0; i <= 10; i++) {
-                discoveryData.add(String.valueOf(i));
-            }
+
+
+        if (weiboAdapter != null) {
+            listView_discovery.setAdapter(weiboAdapter);
+            listView_discovery.setOnItemClickListener(new FirstListViewListener());
+        } else {
+            weiboAdapter = new WeiboAdapter(getContext(), discoveryData);
         }
 
-        weiboAdapter = new WeiboAdapter(getActivity(), discoveryData);
-        listView_discovery.setAdapter(weiboAdapter);
-        listView_discovery.setOnItemClickListener(new FirstListViewListener());
-
         return v;
+    }
+
+    public void setDiscoveryData(ArrayList<Status> discoveryData) {
+        this.discoveryData = discoveryData;
+        if(weiboAdapter != null){
+            weiboAdapter.setData(discoveryData);
+            weiboAdapter.notifyDataSetChanged();
+        }
     }
 
     public class FirstListViewListener implements android.widget.AdapterView.OnItemClickListener {

@@ -1,8 +1,6 @@
 package com.yitouwushui.weibo.Login;
 
-/**
- * Created by yitouwushui on 2016/3/3.
- */
+
 public class App {
 
     public static final String URL = "https://api.weibo.com/oauth2/authorize?client_id=3078393470&redirect_uri=https://api.weibo.com/oauth2/default.html";
@@ -21,4 +19,17 @@ public class App {
 
     //令牌
     public static final String ACCESS_TOKEN = "access_token";
+
+    public static final int MESSAGE_LOGIN = 1;
+
+    public static final int MESSAGE_USER = 2;
+
+    public static final int MESSAGE_PUBLIC_STATUS = 3;
+
+    public static final String ACTION_USER = "ACTION_USER";
+
+    public static final String ACTION_USER_AT = "ACTION_USER_AT";
+    public static final String ACTION_USER_UID = "ACTION_USER_UID";
+
 }
+

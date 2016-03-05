@@ -10,7 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.yitouwushui.weibo.R;
-import com.yitouwushui.weibo.weibo.WeiboAdapter;
+import com.yitouwushui.weibo.entity.Status;
 import com.yitouwushui.weibo.weibo.WeiboPageActivity;
 
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ public class FirstPageFragment extends Fragment{
 
     ListView listView_first;
     WeiboAdapter weiboAdapter;
-    List<String> fristData = new ArrayList<>();
+    ArrayList<Status> fristData = new ArrayList<>();
 
 //    https://api.weibo.com/2/statuses/user_timeline/ids.json
 
@@ -35,15 +35,12 @@ public class FirstPageFragment extends Fragment{
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_first_page, container, false);
         listView_first = (ListView) v.findViewById(R.id.listView_first_page);
-        if (savedInstanceState == null) {
-            for (int i = 0; i <= 10; i++) {
-                fristData.add(String.valueOf(i));
-            }
-        }
 
-        weiboAdapter = new WeiboAdapter(getActivity(), fristData);
-        listView_first.setAdapter(weiboAdapter);
-        listView_first.setOnItemClickListener(new FirstListViewListener());
+        if (weiboAdapter == null) {
+            weiboAdapter = new WeiboAdapter(getActivity(),fristData);
+            listView_first.setAdapter(weiboAdapter);
+            listView_first.setOnItemClickListener(new FirstListViewListener());
+        }
 
         return v;
     }

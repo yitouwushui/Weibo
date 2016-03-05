@@ -1,77 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="8dp">
 
     <RelativeLayout
+        android:id="@+id/relativeLayout11"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:id="@+id/relativeLayout11"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:background="@android:color/white"
         android:elevation="1dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:padding="8dp">
 
-        <ImageView
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/imageView10"
             android:layout_width="52dp"
             android:layout_height="52dp"
-            android:id="@+id/imageView10"
-            android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            fresco:roundedCornerRadius="180dp"
+            fresco:roundingBorderColor="@color/colorBlue"
+            fresco:roundingBorderWidth="1dp" />
 
         <TextView
+            android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="一脸懵逼"
-            android:id="@+id/textView5"
-            android:textColor="@android:color/holo_orange_dark"
             android:layout_alignTop="@+id/imageView10"
-            android:layout_toRightOf="@+id/imageView10"
-            android:layout_toEndOf="@+id/imageView10"
             android:layout_marginLeft="6dp"
             android:layout_marginStart="6dp"
             android:layout_marginTop="4dp"
+            android:layout_toEndOf="@+id/imageView10"
+            android:layout_toRightOf="@+id/imageView10"
+            android:text="一脸懵逼"
+            android:textColor="@android:color/holo_orange_dark"
             android:textSize="18dp" />
 
         <TextView
+            android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="14分钟前"
-            android:id="@+id/textView6"
-            android:layout_marginTop="6dp"
-            android:layout_below="@+id/textView5"
             android:layout_alignLeft="@+id/textView5"
             android:layout_alignStart="@+id/textView5"
+            android:layout_below="@+id/textView5"
+            android:layout_marginTop="6dp"
+            android:text="14分钟前"
             android:textSize="10dp" />
 
         <TextView
+            android:id="@+id/textView8"
             android:layout_width="match_parent"
             android:layout_height="6dp"
-            android:id="@+id/textView8"
-            android:layout_below="@+id/imageView10"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/imageView10" />
 
         <TextView
+            android:id="@+id/textView9"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="这里是正文"
-            android:id="@+id/textView9"
-            android:layout_below="@+id/textView8"
             android:layout_alignLeft="@+id/textView6"
-            android:layout_alignStart="@+id/textView6" />
+            android:layout_alignStart="@+id/textView6"
+            android:layout_below="@+id/textView8"
+            android:text="这里是正文" />
 
         <ImageView
-            android:layout_width="22dp"
-            android:layout_height="22dp"
             android:id="@+id/img_user_zan"
-            android:layout_alignTop="@+id/textView5"
-            android:layout_alignParentRight="true"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/textView5"
             android:src="@drawable/weibo_zan" />
 
     </RelativeLayout>

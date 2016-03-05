@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     tools:context=".weibo.WeiboPageActivity">
 
     <com.yitouwushui.weibo.weibo.MyScrollView
@@ -55,13 +56,16 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true">
 
-                <ImageView
+                <com.facebook.drawee.view.SimpleDraweeView
                     android:id="@+id/img_wbPage_icon"
                     android:layout_width="52dp"
                     android:layout_height="52dp"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true" />
+                    android:layout_alignParentTop="true"
+                    fresco:roundedCornerRadius="180dp"
+                    fresco:roundingBorderColor="@color/colorBlue"
+                    fresco:roundingBorderWidth="1dp"/>
 
                 <LinearLayout
                     android:id="@+id/linearLayout9"
@@ -72,23 +76,26 @@
                     android:layout_below="@+id/text_wbPage_word"
                     android:orientation="horizontal">
 
-                    <ImageView
+                    <com.facebook.drawee.view.SimpleDraweeView
                         android:id="@+id/img_wbPage1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:visibility="gone"/>
 
-                    <ImageView
+                    <com.facebook.drawee.view.SimpleDraweeView
                         android:id="@+id/img_wbPage2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:visibility="gone"/>
 
-                    <ImageView
+                    <com.facebook.drawee.view.SimpleDraweeView
                         android:id="@+id/img_wbPage3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:visibility="gone"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -100,23 +107,26 @@
                     android:layout_below="@+id/linearLayout9"
                     android:orientation="horizontal">
 
-                    <ImageView
+                    <com.facebook.drawee.view.SimpleDraweeView
                         android:id="@+id/img_wbPage4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:visibility="gone"/>
 
-                    <ImageView
+                    <com.facebook.drawee.view.SimpleDraweeView
                         android:id="@+id/img_wbPage5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:visibility="gone"/>
 
-                    <ImageView
+                    <com.facebook.drawee.view.SimpleDraweeView
                         android:id="@+id/img_wbPage6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:visibility="gone"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -128,23 +138,26 @@
                     android:layout_below="@+id/linearLayout10"
                     android:orientation="horizontal">
 
-                    <ImageView
+                    <com.facebook.drawee.view.SimpleDraweeView
                         android:id="@+id/img_wbPage7"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:visibility="gone"/>
 
-                    <ImageView
+                    <com.facebook.drawee.view.SimpleDraweeView
                         android:id="@+id/img_wbPage8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:visibility="gone"/>
 
-                    <ImageView
+                    <com.facebook.drawee.view.SimpleDraweeView
                         android:id="@+id/img_wbPage9"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:visibility="gone"/>
                 </LinearLayout>
 
                 <TextView
@@ -159,7 +172,7 @@
                     android:layout_toRightOf="@+id/img_wbPage_icon"
                     android:text="一脸懵逼"
                     android:textColor="@android:color/holo_orange_dark"
-                    android:textSize="18dp" />
+                    android:textSize="16dp" />
 
                 <TextView
                     android:id="@+id/text_wbPage_time"
@@ -203,8 +216,8 @@
 
                 <ImageView
                     android:id="@+id/img_wbPage_collect"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     android:layout_alignTop="@+id/text_wbPage_name"

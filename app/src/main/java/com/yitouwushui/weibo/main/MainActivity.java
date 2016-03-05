@@ -1,30 +1,17 @@
 package com.yitouwushui.weibo.main;
 
-import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-import com.squareup.picasso.Picasso;
-import com.yitouwushui.weibo.Login.App;
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.yitouwushui.weibo.R;
-import com.yitouwushui.weibo.entity.User;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,18 +24,13 @@ public class MainActivity extends AppCompatActivity {
     BottomAdapter bottomAdapter;
     GridView gridView_bottom;
 
-    String access_token = null;
-    String uid;
-    String expires_in;
-    User user;
-    Bitmap bitmap = null;
-    Picasso picasso;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Fresco.initialize(this);
 
         if (savedInstanceState == null) {
             discoveryFragment = new DiscoveryFragment();
@@ -56,62 +38,8 @@ public class MainActivity extends AppCompatActivity {
             meFragment = new MeFragment();
             messageFragment = new MessageFragment();
         }
+
         init();
-
-        /**
-         * 获取参数
-         */
-        getParam();
-
-
-    }
-
-    /**
-     * 获得参数
-     */
-    private void getParam() {
-        Volley.newRequestQueue(MainActivity.this).add(
-                new StringRequest(
-                        Request.Method.GET,
-                        "https://api.weibo.com/2/users/show.json?access_token=" + access_token + "&uid=" + uid,
-                        new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response) {
-                                try {
-                                    JSONObject json = new JSONObject(response);
-
-                                    user = new User();
-                                    user.setId(json.getLong("id"));
-                                    user.setScreen_name(json.getString("screen_name"));
-                                    user.setProfile_image_url(json.getString("profile_image_url"));
-                                    user.setProvince(json.getString("province"));
-                                    user.setCity(json.getString("city"));
-                                    user.setLocation(json.getString("location"));
-                                    user.setDescription(json.getString("description"));
-                                    user.setProfile_url(json.getString("profile_url"));
-                                    user.setGender(json.getString("gender"));
-                                    user.setFollowers_count(json.getInt("followers_count"));
-                                    user.setFriends_count(json.getInt("friends_count"));
-                                    user.setStatuses_count(json.getInt("statuses_count"));
-                                    user.setFavourites_count(json.getInt("favourites_count"));
-                                    user.setCreated_at(json.getString("created_at"));
-                                    user.setAvatar_large(json.getString("avatar_large"));
-                                    user.setAvatar_hd(json.getString("avatar_hd"));
-                                    user.setBi_followers_count(json.getInt("bi_followers_count"));
-
-                                    user.save();
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-
-                            }
-                        },
-                        new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-                                Log.e("error", error.toString());
-                            }
-                        }));
     }
 
     /**
@@ -122,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         gridView_bottom = (GridView) findViewById(R.id.gridView);
 
         fm = getSupportFragmentManager();
-        setVisibility(firstPageFragment);
+        setVisibility(meFragment);
 
         bottomAdapter = new BottomAdapter(MainActivity.this);
         gridView_bottom.setAdapter(bottomAdapter);
@@ -154,12 +82,7 @@ public class MainActivity extends AppCompatActivity {
                 gridView_bottom.setAdapter(bottomAdapter);
             }
         });
-        // 获取参数
-        Intent intent = getIntent();
-        access_token = intent.getStringExtra(App.ACCESS_TOKEN);
-        uid = intent.getStringExtra("uid");
-        expires_in = intent.getStringExtra("expires_in");
-        picasso = Picasso.with(MainActivity.this);
+
     }
 
     /**
@@ -196,29 +119,5 @@ public class MainActivity extends AppCompatActivity {
 
     public void homePage(View view) {
     }
-
-
-//    private class MeThread extends Thread {
-//        @Override
-//        public void run() {
-//            super.run();
-//            try {
-//
-////                URL url = new URL(user.getAvatar_large());
-////
-////                URLConnection urlConnection = url.openConnection();
-////                HttpURLConnection conn = (HttpURLConnection) urlConnection;
-//
-//                URL url = new URL(user.getAvatar_large());
-//                bitmap = BitmapFactory.decodeStream(url.openStream());
-//            } catch (MalformedURLException e) {
-//                e.printStackTrace();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//
-//        }
-////    }
-
 
 }
