@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.yitouwushui.weibo.R;
+import com.yitouwushui.weibo.entity.Status;
 import com.yitouwushui.weibo.main.FirstPageFragment;
 
 public class WeiboPageActivity extends AppCompatActivity implements MyScrollView.OnScrollListener {
@@ -97,11 +98,9 @@ public class WeiboPageActivity extends AppCompatActivity implements MyScrollView
     private void showInformation() {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        String name = (String) bundle.get(FirstPageFragment.WEIBO_MESSAGE);
+        Status status = (Status) bundle.get(FirstPageFragment.STATUS_SINGLE);
 
-        img_icon.setImageResource(R.drawable.tx);
-        text_name.setText(name);
-        text_word.setText("微博正文12321321312321321");
+
 //        img_zan.setImageResource(isZan ? R.drawable.weibo_zanh : R.drawable.weibo_zan);
     }
 

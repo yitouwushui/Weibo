@@ -92,21 +92,24 @@
 
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/imageView_weibo1"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:visibility="invisible" />
+                android:layout_width="64dp"
+                android:layout_height="128dp"
+                android:visibility="gone"
+                android:layout_weight="1" />
 
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/imageView_weibo2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone" />
+                android:layout_width="64dp"
+                android:layout_height="128dp"
+                android:visibility="gone"
+                android:layout_weight="1" />
 
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/imageView_weibo3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone" />
+                android:layout_width="64dp"
+                android:layout_height="128dp"
+                android:visibility="gone"
+                android:layout_weight="1" />
         </LinearLayout>
 
         <LinearLayout
@@ -120,20 +123,20 @@
 
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/imageView_weibo4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="64dp"
+                android:layout_height="128dp"
                 android:visibility="gone" />
 
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/imageView_weibo5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="64dp"
+                android:layout_height="128dp"
                 android:visibility="gone" />
 
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/imageView_weibo6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="64dp"
+                android:layout_height="128dp"
                 android:visibility="gone" />
         </LinearLayout>
 
@@ -148,20 +151,20 @@
 
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/imageView_weibo7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="64dp"
+                android:layout_height="128dp"
                 android:visibility="gone" />
 
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/imageView_weibo8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="64dp"
+                android:layout_height="128dp"
                 android:visibility="gone" />
 
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/imageView_weibo9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="64dp"
+                android:layout_height="128dp"
                 android:visibility="gone" />
         </LinearLayout>
 

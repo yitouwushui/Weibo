@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
@@ -11,6 +12,7 @@ import android.widget.GridView;
 import android.widget.Toast;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.yitouwushui.weibo.Login.LoginActivity;
 import com.yitouwushui.weibo.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
     MessageFragment messageFragment;
     BottomAdapter bottomAdapter;
     GridView gridView_bottom;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
             meFragment = new MeFragment();
             messageFragment = new MessageFragment();
         }
+
 
         init();
     }
@@ -120,4 +122,7 @@ public class MainActivity extends AppCompatActivity {
     public void homePage(View view) {
     }
 
+    public void freshen(View view) {
+        discoveryFragment.freshen();
+    }
 }

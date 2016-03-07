@@ -22,7 +22,7 @@ public class BottomAdapter extends BaseAdapter {
     Context context;
     List<String> data = new ArrayList<>();
     LayoutInflater inflater;
-    int select = 0;
+    int select = 4;
     int color = Color.rgb(0x56, 0xab, 0xe4);
 
     public BottomAdapter(Context context) {

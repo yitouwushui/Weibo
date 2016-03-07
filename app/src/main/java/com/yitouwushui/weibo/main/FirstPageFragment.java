@@ -18,7 +18,7 @@ import java.util.List;
 
 public class FirstPageFragment extends Fragment{
 
-    public static final String WEIBO_MESSAGE = "WEIBO_MESSAGE";
+    public static final String STATUS_SINGLE = "STATUS_SINGLE";
 
     ListView listView_first;
     WeiboAdapter weiboAdapter;
@@ -53,7 +53,7 @@ public class FirstPageFragment extends Fragment{
                 AdapterView<?> parent, View view, int position, long id) {
 
             Intent intent = new Intent(getActivity(), WeiboPageActivity.class);
-            intent.putExtra(WEIBO_MESSAGE, fristData.get(position));
+            intent.putExtra(STATUS_SINGLE, fristData.get(position));
 
             startActivity(intent);
 

@@ -15,7 +15,6 @@ import android.widget.Toast;
 import com.yitouwushui.weibo.net.NetQueryImpl;
 import com.yitouwushui.weibo.R;
 import com.yitouwushui.weibo.entity.AccessToken;
-import com.yitouwushui.weibo.entity.User;
 import com.yitouwushui.weibo.main.MainActivity;
 
 public class LoginActivity extends AppCompatActivity {
@@ -33,13 +32,14 @@ public class LoginActivity extends AppCompatActivity {
         // 给请求队列赋值
         netQuery = NetQueryImpl.getInstance(LoginActivity.this);
 
-        boolean isFirst = getPreferences(MODE_PRIVATE).getBoolean("isFirst", true);
-        if (isFirst) {
-            isFirst = getPreferences(MODE_PRIVATE).edit().putBoolean("isFirst", false).commit();
+        accessToken = AccessToken.findById(AccessToken.class, 1);
+//        boolean isFirst = getPreferences(MODE_APPEND).getBoolean("isFirst", true);
+        if (accessToken == null) {
             webView = (WebView) findViewById(R.id.webView);
             webView.getSettings().setJavaScriptEnabled(true);// 启动JS
             webView.getSettings().setSupportZoom(false);// 支持缩放
 //        webView.getSettings().setBlockNetworkImage(false);// 是否加载图片
+//            isFirst = getPreferences(MODE_PRIVATE).edit().putBoolean("isFirst", false).commit();
             webView.getSettings().setDisplayZoomControls(true);
             webView.getSettings().setBuiltInZoomControls(true);
             webView.loadUrl(App.URL);
@@ -64,17 +64,14 @@ public class LoginActivity extends AppCompatActivity {
                     netQuery.userQuery(handler);
                     break;
                 case App.MESSAGE_USER:
-                    User user = (User) msg.obj;
                     netQuery.publicStatusQuery(handler);
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("user",user);
-                    intent.putExtras(bundle);
+//                    User user = (User) msg.obj;
+//                    Bundle bundle = new Bundle();
+//                    bundle.putSerializable("user", user);
+//                    intent.putExtras(bundle);
                     startActivity(intent);
                     finish();
-                    break;
-                case App.MESSAGE_PUBLIC_STATUS:
-
                     break;
             }
 
@@ -99,7 +96,6 @@ public class LoginActivity extends AppCompatActivity {
         }
 
     }
-
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {

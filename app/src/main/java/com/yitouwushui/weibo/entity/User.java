@@ -1,8 +1,5 @@
 package com.yitouwushui.weibo.entity;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import com.orm.SugarRecord;
 
 import java.io.Serializable;
@@ -350,6 +347,5 @@ public class User extends SugarRecord implements Serializable {
                 ", lang='" + lang + '\'' +
                 '}';
     }
-
 }
 

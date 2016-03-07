@@ -21,4 +21,11 @@ public class Visible {
         this.list_id = list_id;
     }
 
+    @Override
+    public String toString() {
+        return "Visible{" +
+                "list_id=" + list_id +
+                ", type=" + type +
+                '}';
+    }
 }

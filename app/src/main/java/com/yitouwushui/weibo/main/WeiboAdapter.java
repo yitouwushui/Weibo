@@ -58,7 +58,6 @@ public class WeiboAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-//        Log.e("xitong",String.valueOf(position));
         Holder holder;
         ButtonListener buttonListener;
         if (convertView == null) {
@@ -83,12 +82,12 @@ public class WeiboAdapter extends BaseAdapter {
         buttonListener.setPosition(position);
         Status status = data.get(position);
         Status.User user = status.getUser();
-        Log.e("--------", user.getAvatar_large());
+        Log.e("--------", status.toString());
         holder.img_icon.setImageURI(Uri.parse(user.getAvatar_large()));
         holder.text_name.setText(user.getScreen_name());
         holder.text_device.setText(sourceStart.append(status.getSource()));
         sourceStart.replace(0, sourceStart.length(), "来自 ");
-        holder.text_time.setText(TimeUtil.getRelativeTime(status.getCreated_at()));
+        holder.text_time.setText(TimeUtil.stringTranslateTime(status.getCreated_at()));
         holder.text_word.setText(status.getText());
         holder.text_tran.setText(String.valueOf(status.getReposts_count()));
         holder.text_comment.setText(String.valueOf(status.getComments_count()));
@@ -96,10 +95,10 @@ public class WeiboAdapter extends BaseAdapter {
         holder.img_zan.setImageResource(status.isFavorited() ? R.drawable.weibo_zanh : R.drawable.weibo_zan);
         holder.img_collect.setImageResource(status.isFavorited() ? R.drawable.shoucang2 : R.drawable.shoucang);
 //        Status.Pic_ids pic_ids = new Status.Pic_ids();
-        if (status.getThumbnail_pic() != "") {
-//            Log.e("--------", status.getThumbnail_pic());
-//            holder.img_weibo1.setImageURI(Uri.parse(status.getThumbnail_pic()));
-//            holder.img_weibo1.setVisibility(View.VISIBLE);
+        if (status.getBmiddle_pic() != null) {
+            Log.e("-----------------------", status.getBmiddle_pic());
+            holder.img_weibo1.setImageURI(Uri.parse(status.getBmiddle_pic()));
+            holder.img_weibo1.setVisibility(View.VISIBLE);
 //            holder.img_weibo2.setImageResource(R.drawable.home);
 //            holder.img_weibo3.setImageResource(R.drawable.me);
 //            holder.img_weibo4.setImageResource(R.drawable.weibo_zanh);

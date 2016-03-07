@@ -3,8 +3,6 @@ package com.yitouwushui.weibo.entity;
 import com.orm.SugarRecord;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Status extends SugarRecord implements Serializable {
     private String created_at;
@@ -25,8 +23,7 @@ public class Status extends SugarRecord implements Serializable {
     private int reposts_count;
     private int comments_count;
     private int attitudes_count;
-    private int mlevel;
-    private Visible visible;
+    private long userIdStatus;
 
     public String getPic_ids() {
         return pic_ids;
@@ -118,12 +115,12 @@ public class Status extends SugarRecord implements Serializable {
         this.mid = mid;
     }
 
-    public int getMlevel() {
-        return mlevel;
+    public long getUserIdStatus() {
+        return userIdStatus;
     }
 
-    public void setMlevel(int mlevel) {
-        this.mlevel = mlevel;
+    public void setUserIdStatus(long userIdStatus) {
+        this.userIdStatus = userIdStatus;
     }
 
     public String getOriginal_pic() {
@@ -190,14 +187,6 @@ public class Status extends SugarRecord implements Serializable {
         this.user = user;
     }
 
-    public Visible getVisible() {
-        return visible;
-    }
-
-    public void setVisible(Visible visible) {
-        this.visible = visible;
-    }
-
     public Status() {
     }
 
@@ -222,13 +211,14 @@ public class Status extends SugarRecord implements Serializable {
                 ", retweeted_status=" + retweeted_status +
                 ", reposts_count=" + reposts_count +
                 ", comments_count=" + comments_count +
-                ", mlevel=" + mlevel +
-                ", visible=" + visible +
+                ", userIdStatus=" + userIdStatus +
                 ", pic_ids=" + pic_ids +
                 '}';
     }
 
-    public static class User {
+
+
+    public static class User extends SugarRecord {
         private String idstr;
         private String screen_name;
         private String name;
@@ -525,6 +515,45 @@ public class Status extends SugarRecord implements Serializable {
 
         public void setWeihao(String weihao) {
             this.weihao = weihao;
+        }
+
+        @Override
+        public String toString() {
+            return "User{" +
+                    "allow_all_act_msg=" + allow_all_act_msg +
+                    ", idstr='" + idstr + '\'' +
+                    ", screen_name='" + screen_name + '\'' +
+                    ", name='" + name + '\'' +
+                    ", province=" + province +
+                    ", city=" + city +
+                    ", location='" + location + '\'' +
+                    ", description='" + description + '\'' +
+                    ", url='" + url + '\'' +
+                    ", profile_image_url='" + profile_image_url + '\'' +
+                    ", cover_image_phone='" + cover_image_phone + '\'' +
+                    ", profile_url='" + profile_url + '\'' +
+                    ", domain='" + domain + '\'' +
+                    ", weihao='" + weihao + '\'' +
+                    ", gender='" + gender + '\'' +
+                    ", followers_count=" + followers_count +
+                    ", friends_count=" + friends_count +
+                    ", statuses_count=" + statuses_count +
+                    ", favourites_count=" + favourites_count +
+                    ", created_at='" + created_at + '\'' +
+                    ", following=" + following +
+                    ", geo_enabled=" + geo_enabled +
+                    ", verified=" + verified +
+                    ", verified_type=" + verified_type +
+                    ", remark='" + remark + '\'' +
+                    ", allow_all_comment=" + allow_all_comment +
+                    ", avatar_large='" + avatar_large + '\'' +
+                    ", avatar_hd='" + avatar_hd + '\'' +
+                    ", verified_reason='" + verified_reason + '\'' +
+                    ", follow_me=" + follow_me +
+                    ", online_status=" + online_status +
+                    ", bi_followers_count=" + bi_followers_count +
+                    ", lang='" + lang + '\'' +
+                    '}';
         }
     }
 
