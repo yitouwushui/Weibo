@@ -14,10 +14,13 @@ import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.yitouwushui.weibo.R;
+import com.yitouwushui.weibo.entity.Pic_urls;
+import com.yitouwushui.weibo.entity.User;
 import com.yitouwushui.weibo.util.TimeUtil;
 import com.yitouwushui.weibo.entity.Status;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -28,6 +31,7 @@ public class WeiboAdapter extends BaseAdapter {
     LayoutInflater inflater;
     Boolean isZan = false;
     StringBuilder sourceStart = new StringBuilder("来自 ");
+    HashMap<Integer, SimpleDraweeView> imgHM = new HashMap<>();
 
 
     public WeiboAdapter(Context context, ArrayList<Status> data) {
@@ -60,6 +64,7 @@ public class WeiboAdapter extends BaseAdapter {
 
         Holder holder;
         ButtonListener buttonListener;
+        // 新建
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.weibo_item, parent, false);
             holder = new Holder(convertView);
@@ -75,14 +80,18 @@ public class WeiboAdapter extends BaseAdapter {
             holder.reLayout_weibo_tra.setTag(buttonListener);
             holder.reLayout_weibo_com.setTag(buttonListener);
             holder.reLayout_weibo_zan.setTag(buttonListener);
+            // 复用
         } else {
             holder = (Holder) convertView.getTag();
             buttonListener = (ButtonListener) holder.reLayout_weibo_zan.getTag();
         }
+
         buttonListener.setPosition(position);
+
         Status status = data.get(position);
-        Status.User user = status.getUser();
-        Log.e("--------", status.toString());
+        User user = status.getUser();
+
+        Log.e("适配器", status.toString());
         holder.img_icon.setImageURI(Uri.parse(user.getAvatar_large()));
         holder.text_name.setText(user.getScreen_name());
         holder.text_device.setText(sourceStart.append(status.getSource()));
@@ -94,33 +103,34 @@ public class WeiboAdapter extends BaseAdapter {
         holder.text_zan.setText(String.valueOf(status.getAttitudes_count()));
         holder.img_zan.setImageResource(status.isFavorited() ? R.drawable.weibo_zanh : R.drawable.weibo_zan);
         holder.img_collect.setImageResource(status.isFavorited() ? R.drawable.shoucang2 : R.drawable.shoucang);
-//        Status.Pic_ids pic_ids = new Status.Pic_ids();
-        if (status.getBmiddle_pic() != null) {
-            Log.e("-----------------------", status.getBmiddle_pic());
-            holder.img_weibo1.setImageURI(Uri.parse(status.getBmiddle_pic()));
-            holder.img_weibo1.setVisibility(View.VISIBLE);
-//            holder.img_weibo2.setImageResource(R.drawable.home);
-//            holder.img_weibo3.setImageResource(R.drawable.me);
-//            holder.img_weibo4.setImageResource(R.drawable.weibo_zanh);
-//            holder.img_weibo5.setImageResource(R.drawable.weibo_zan);
-//            holder.img_weibo6.setImageResource(R.drawable.mailb);
-//            holder.img_weibo7.setImageResource(R.drawable.psd);
-//            holder.img_weibo8.setImageResource(R.drawable.name);
-//            holder.img_weibo9.setImageResource(R.drawable.jia);
-//            holder.img_weibo2.setVisibility(View.VISIBLE);
-//            holder.img_weibo3.setVisibility(View.VISIBLE);
-//            holder.img_weibo4.setVisibility(View.VISIBLE);
-//            holder.img_weibo5.setVisibility(View.VISIBLE);
-//            holder.img_weibo6.setVisibility(View.VISIBLE);
-//            holder.img_weibo7.setVisibility(View.VISIBLE);
-//            holder.img_weibo8.setVisibility(View.VISIBLE);
-//            holder.img_weibo8.setVisibility(View.VISIBLE);
-//            holder.img_weibo9.setVisibility(View.VISIBLE);
+
+        // 获得图片ArrayList
+        ArrayList<Pic_urls> pic_urlsList = status.getPic_urls();
+        if (pic_urlsList != null) {
+            int i = 0;
+            for (; i < pic_urlsList.size(); i++) {
+                // 获得图片控件的引用
+                SimpleDraweeView picView = imgHM.get(i);
+
+                picView.setImageURI(Uri.parse(pic_urlsList.get(i).getThumbnail_pic()));
+                picView.setVisibility(View.VISIBLE);
+            }
+            // 多余的控件隐藏
+            for (; i < 9; i++) {
+                imgHM.get(i).setVisibility(View.GONE);
+
+            }
         }
+
+
+
         return convertView;
     }
 
-    protected class Holder {
+    /**
+     * 复用类
+     */
+    public class Holder {
         SimpleDraweeView img_icon;
         ImageView img_collect;
         TextView text_name;
@@ -167,6 +177,15 @@ public class WeiboAdapter extends BaseAdapter {
             reLayout_weibo_com = (RelativeLayout) v.findViewById(R.id.reLayout_weibo_com);
             reLayout_weibo_zan = (RelativeLayout) v.findViewById(R.id.reLayout_weibo_zan);
             img_zan = (ImageView) v.findViewById(R.id.imageView_weibo_zan);
+            imgHM.put(0, img_weibo1);
+            imgHM.put(1, img_weibo2);
+            imgHM.put(2, img_weibo3);
+            imgHM.put(3, img_weibo4);
+            imgHM.put(4, img_weibo5);
+            imgHM.put(5, img_weibo6);
+            imgHM.put(6, img_weibo7);
+            imgHM.put(7, img_weibo8);
+            imgHM.put(8, img_weibo9);
         }
     }
 
@@ -189,7 +208,7 @@ public class WeiboAdapter extends BaseAdapter {
                     showMsg("评论" + list_position);
                     break;
                 case R.id.reLayout_weibo_zan:
-                    zan();
+                    showMsg("赞" + list_position);
                     break;
                 case R.id.imageView_weibo_collect:
                     showMsg("收藏" + list_position);
@@ -200,10 +219,6 @@ public class WeiboAdapter extends BaseAdapter {
             }
         }
 
-        private void zan() {
-            isZan = !isZan;
-            notifyDataSetChanged();
-        }
     }
 
 

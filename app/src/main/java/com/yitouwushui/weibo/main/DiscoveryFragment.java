@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import com.yitouwushui.weibo.Login.App;
 import com.yitouwushui.weibo.R;
+import com.yitouwushui.weibo.entity.Pic_urls;
 import com.yitouwushui.weibo.entity.Status;
 import com.yitouwushui.weibo.entity.User;
 import com.yitouwushui.weibo.net.NetQueryImpl;
@@ -49,14 +51,9 @@ public class DiscoveryFragment extends Fragment {
 
         if (discoveryData.size() == 0) {
             getData();
-            if (discoveryData.size() == 0) {
-                NetQueryImpl.getInstance(getContext()).publicStatusQuery(handler);
-            }
         }
-
         if (weiboAdapter == null) {
             weiboAdapter = new WeiboAdapter(getContext(), discoveryData);
-//            weiboAdapter.notifyDataSetChanged();
         }
         listView_discovery.setAdapter(weiboAdapter);
         listView_discovery.setOnItemClickListener(new FirstListViewListener());
@@ -68,16 +65,23 @@ public class DiscoveryFragment extends Fragment {
         NetQueryImpl.getInstance(getContext()).publicStatusQuery(handler);
     }
 
+    /**
+     * 从本地存储加载数据到当前discoveryData表
+     */
     private void getData() {
         ArrayList<Status> newData = (ArrayList<Status>) Status.findWithQuery(
                 Status.class,
-                "select * from status order by id desc limit 10");
+                "select * from status where type = 1 limit 10");
         for (int i = newData.size() - 1; i >= 0; i--) {
             Status status = newData.get(i);
-            Status.User user = User.findById(Status.User.class, status.getUserIdStatus());
+            User user = User.findById(User.class, status.getUserIdStatus());
             status.setUser(user);
+            ArrayList<Pic_urls> pic_urlsList =
+                    (ArrayList<Pic_urls>) Pic_urls.find(Pic_urls.class, "statusid=?", status.getIdstr());
+            status.setPic_urls(pic_urlsList);
+            Log.e("热门界面", status.toString());
             discoveryData.add(status);
-            if (weiboAdapter != null) {
+            if(weiboAdapter != null){
                 weiboAdapter.setData(discoveryData);
                 weiboAdapter.notifyDataSetChanged();
             }
