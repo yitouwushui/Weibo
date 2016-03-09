@@ -2,8 +2,10 @@ package com.yitouwushui.weibo.entity;
 
 import com.orm.SugarRecord;
 
+import java.io.Serializable;
 
-public class AccessToken extends SugarRecord {
+
+public class AccessToken extends SugarRecord implements Serializable {
 
     String access_token;
     String expires_in;

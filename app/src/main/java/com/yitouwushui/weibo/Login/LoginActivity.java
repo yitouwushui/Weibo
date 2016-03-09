@@ -64,12 +64,13 @@ public class LoginActivity extends AppCompatActivity {
                     netQuery.userQuery(handler);
                     break;
                 case App.MESSAGE_USER:
+                    netQuery.friendStatusQuery(handler);
                     netQuery.publicStatusQuery(handler);
+                    break;
+                case App.MESSAGE_PUBLIC_STATUS:
+                    break;
+                case App.MESSAGE_FRIENDS:
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-//                    User user = (User) msg.obj;
-//                    Bundle bundle = new Bundle();
-//                    bundle.putSerializable("user", user);
-//                    intent.putExtras(bundle);
                     startActivity(intent);
                     finish();
                     break;

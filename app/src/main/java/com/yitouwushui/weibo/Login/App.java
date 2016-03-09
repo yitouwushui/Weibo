@@ -26,10 +26,9 @@ public class App {
 
     public static final int MESSAGE_PUBLIC_STATUS = 3;
 
-    public static final String ACTION_USER = "ACTION_USER";
+    public static final int MESSAGE_FRIENDS = 4;
 
-    public static final String ACTION_USER_AT = "ACTION_USER_AT";
-    public static final String ACTION_USER_UID = "ACTION_USER_UID";
+    public static final int MESSAGE_COMMENTS = 5;
 
 }
 

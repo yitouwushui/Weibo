@@ -33,12 +33,12 @@ public class MainActivity extends AppCompatActivity {
 
         Fresco.initialize(this);
 
-        if (savedInstanceState == null) {
+//        if (savedInstanceState == null) {
             discoveryFragment = new DiscoveryFragment();
             firstPageFragment = new FirstPageFragment();
             meFragment = new MeFragment();
             messageFragment = new MessageFragment();
-        }
+//        }
 
 
         init();

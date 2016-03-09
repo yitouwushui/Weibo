@@ -17,7 +17,7 @@
         android:padding="8dp">
 
         <com.facebook.drawee.view.SimpleDraweeView
-            android:id="@+id/imageView10"
+            android:id="@+id/img_com_icon"
             android:layout_width="52dp"
             android:layout_height="52dp"
             android:layout_alignParentLeft="true"
@@ -28,26 +28,26 @@
             fresco:roundingBorderWidth="1dp" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/text_com_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/imageView10"
+            android:layout_alignTop="@+id/img_com_icon"
             android:layout_marginLeft="6dp"
             android:layout_marginStart="6dp"
             android:layout_marginTop="4dp"
-            android:layout_toEndOf="@+id/imageView10"
-            android:layout_toRightOf="@+id/imageView10"
+            android:layout_toEndOf="@+id/img_com_icon"
+            android:layout_toRightOf="@+id/img_com_icon"
             android:text="一脸懵逼"
             android:textColor="@android:color/holo_orange_dark"
             android:textSize="18dp" />
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/text_com_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/textView5"
-            android:layout_alignStart="@+id/textView5"
-            android:layout_below="@+id/textView5"
+            android:layout_alignLeft="@+id/text_com_name"
+            android:layout_alignStart="@+id/text_com_name"
+            android:layout_below="@+id/text_com_name"
             android:layout_marginTop="6dp"
             android:text="14分钟前"
             android:textSize="10dp" />
@@ -58,14 +58,14 @@
             android:layout_height="6dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/imageView10" />
+            android:layout_below="@+id/img_com_icon" />
 
         <TextView
-            android:id="@+id/textView9"
+            android:id="@+id/text_com_word"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/textView6"
-            android:layout_alignStart="@+id/textView6"
+            android:layout_alignLeft="@+id/text_com_time"
+            android:layout_alignStart="@+id/text_com_time"
             android:layout_below="@+id/textView8"
             android:text="这里是正文" />
 
@@ -73,10 +73,21 @@
             android:id="@+id/img_user_zan"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignTop="@+id/textView5"
+            android:layout_alignTop="@+id/text_com_name"
+            android:layout_toLeftOf="@+id/text_zan_count"
+            android:layout_toStartOf="@+id/text_zan_count"
             android:src="@drawable/weibo_zan" />
+
+        <TextView
+            android:id="@+id/text_zan_count"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:padding="2dp"
+            android:layout_alignEnd="@+id/text_com_word"
+            android:layout_alignRight="@+id/text_com_word"
+            android:layout_alignTop="@+id/img_user_zan"
+            android:gravity="center"
+            />
 
     </RelativeLayout>
 </RelativeLayout>

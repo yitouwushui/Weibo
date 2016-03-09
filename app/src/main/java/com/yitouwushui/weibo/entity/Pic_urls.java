@@ -2,10 +2,12 @@ package com.yitouwushui.weibo.entity;
 
 import com.orm.SugarRecord;
 
+import java.io.Serializable;
+
 /**
  * Created by yitouwushui on 2016/3/8.
  */
-public class Pic_urls extends SugarRecord {
+public class Pic_urls extends SugarRecord implements Serializable {
 
     long status_id;
 

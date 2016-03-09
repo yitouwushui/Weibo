@@ -1,6 +1,7 @@
 package com.yitouwushui.weibo.main;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -34,14 +35,18 @@ public class DiscoveryFragment extends Fragment {
     ListView listView_discovery;
     WeiboAdapter weiboAdapter;
     ArrayList<Status> discoveryData = new ArrayList<>();
-    int size = 0;
-
-//    https://api.weibo.com/2/statuses/public_timeline.json
 
     public DiscoveryFragment() {
         // Required empty public constructor
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (discoveryData.size() == 0) {
+            getData();
+        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,9 +54,7 @@ public class DiscoveryFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_discovery, container, false);
         listView_discovery = (ListView) v.findViewById(R.id.listView_discovery);
 
-        if (discoveryData.size() == 0) {
-            getData();
-        }
+
         if (weiboAdapter == null) {
             weiboAdapter = new WeiboAdapter(getContext(), discoveryData);
         }
@@ -79,7 +82,7 @@ public class DiscoveryFragment extends Fragment {
             ArrayList<Pic_urls> pic_urlsList =
                     (ArrayList<Pic_urls>) Pic_urls.find(Pic_urls.class, "statusid=?", status.getIdstr());
             status.setPic_urls(pic_urlsList);
-            Log.e("热门界面", status.toString());
+//            Log.e("热门界面", status.toString());
             discoveryData.add(status);
             if(weiboAdapter != null){
                 weiboAdapter.setData(discoveryData);
@@ -88,6 +91,9 @@ public class DiscoveryFragment extends Fragment {
         }
     }
 
+    /**
+     * 处理网络请求返回消息
+     */
     Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -98,6 +104,9 @@ public class DiscoveryFragment extends Fragment {
         }
     };
 
+    /**
+     * listView监听器
+     */
     public class FirstListViewListener implements android.widget.AdapterView.OnItemClickListener {
 
 
@@ -106,8 +115,8 @@ public class DiscoveryFragment extends Fragment {
                 AdapterView<?> parent, View view, int position, long id) {
 
             Intent intent = new Intent(getActivity(), WeiboPageActivity.class);
-            intent.putExtra(STATUS_SINGLE, discoveryData.get(position));
-//            startActivity(intent);
+//            intent.putExtra(STATUS_SINGLE, discoveryData.get(position));
+            startActivity(intent);
             Toast.makeText(getActivity(), "跳转单微博" + position, Toast.LENGTH_SHORT).show();
 
         }
