@@ -1,31 +1,31 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ptr="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mainActivity.FirstPageFragment"
-    >
+    tools:context=".mainActivity.FirstPageFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
     <RelativeLayout
+        android:id="@+id/relativeLayout3"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:orientation="horizontal"
-        android:id="@+id/relativeLayout3"
         android:layout_alignParentTop="true"
-        android:background="@android:color/white"
         android:layout_centerHorizontal="true"
-        android:elevation="3dp">
+        android:background="@android:color/white"
+        android:elevation="3dp"
+        android:orientation="horizontal">
 
         <Button
-            style="@android:style/Widget.DeviceDefault.Button.Borderless.Small"
             android:id="@+id/button3"
+            style="@android:style/Widget.DeviceDefault.Button.Borderless.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="分类"
-            android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:text="分类" />
 
         <TextView
             android:id="@+id/textViewLoginName"
@@ -37,21 +37,41 @@
             android:text="暖" />
 
         <ImageView
+            android:id="@+id/imageViewSearch"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:id="@+id/imageViewSearch"
-            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentTop="true" />
 
     </RelativeLayout>
 
-    <ListView
+    <!--<ListView-->
+        <!--android:id="@+id/listView_first_page"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_below="@+id/relativeLayout3"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:paddingBottom="2dp"-->
+        <!--android:paddingTop="2dp" />-->
+
+  <com.yitouwushui.weibo.view.pulltorefreshview.PullToRefreshListView
+        android:id="@+id/listView_first_page"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/listView_first_page"
         android:layout_below="@+id/relativeLayout3"
         android:layout_centerHorizontal="true"
-        android:paddingBottom="2dp"
-        android:paddingTop="2dp"/>
+        android:cacheColorHint="#00000000"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:fadingEdge="none"
+        android:fastScrollEnabled="false"
+        android:footerDividersEnabled="false"
+        android:headerDividersEnabled="false"
+        android:smoothScrollbar="true"
+        ptr:ptrAnimationStyle="flip"
+        ptr:ptrAutoLoad="true"
+        ptr:ptrMode="both">
+
+    </com.yitouwushui.weibo.view.pulltorefreshview.PullToRefreshListView>
 </RelativeLayout>

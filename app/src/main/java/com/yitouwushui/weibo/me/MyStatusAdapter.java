@@ -1,7 +1,8 @@
-package com.yitouwushui.weibo.main;
+package com.yitouwushui.weibo.me;
 
 import android.content.Context;
 import android.net.Uri;
+import android.support.v7.widget.GridLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,27 +15,25 @@ import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.yitouwushui.weibo.R;
-import com.yitouwushui.weibo.entity.Pic_urls;
-import com.yitouwushui.weibo.entity.User;
-import com.yitouwushui.weibo.util.TimeUtil;
 import com.yitouwushui.weibo.entity.Status;
+import com.yitouwushui.weibo.entity.User;
+import com.yitouwushui.weibo.utils.Util;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-
-public class WeiboAdapter extends BaseAdapter {
+/**
+ * 首页和发现页面适配器
+ */
+public class MyStatusAdapter extends BaseAdapter {
 
     Context context;
     List<Status> data = new ArrayList<>();
     LayoutInflater inflater;
-    Boolean isZan = false;
     StringBuilder sourceStart = new StringBuilder("来自 ");
-    HashMap<Integer, SimpleDraweeView> imgHM = new HashMap<>();
 
-
-    public WeiboAdapter(Context context, ArrayList<Status> data) {
+    public MyStatusAdapter(Context context, List<Status> data) {
         this.context = context;
         this.data = data;
         inflater = LayoutInflater.from(context);
@@ -66,7 +65,7 @@ public class WeiboAdapter extends BaseAdapter {
         ButtonListener buttonListener;
         // 新建
         if (convertView == null) {
-            convertView = inflater.inflate(R.layout.weibo_item, parent, false);
+            convertView = inflater.inflate(R.layout.my_status_item, parent, false);
             holder = new Holder(convertView);
             buttonListener = new ButtonListener();
             holder.img_icon.setOnClickListener(buttonListener);
@@ -91,12 +90,11 @@ public class WeiboAdapter extends BaseAdapter {
         Status status = data.get(position);
         User user = status.getUser();
 
-        Log.e("适配器", status.toString());
         holder.img_icon.setImageURI(Uri.parse(user.getAvatar_large()));
         holder.text_name.setText(user.getScreen_name());
         holder.text_device.setText(sourceStart.append(status.getSource()));
         sourceStart.replace(0, sourceStart.length(), "来自 ");
-        holder.text_time.setText(TimeUtil.stringTranslateTime(status.getCreated_at()));
+        holder.text_time.setText(Util.stringTranslateTime(status.getCreated_at()));
         holder.text_word.setText(status.getText());
         holder.text_tran.setText(String.valueOf(status.getReposts_count()));
         holder.text_comment.setText(String.valueOf(status.getComments_count()));
@@ -104,24 +102,58 @@ public class WeiboAdapter extends BaseAdapter {
         holder.img_zan.setImageResource(status.isFavorited() ? R.drawable.weibo_zanh : R.drawable.weibo_zan);
         holder.img_collect.setImageResource(status.isFavorited() ? R.drawable.shoucang2 : R.drawable.shoucang);
 
-        // 获得图片ArrayList
-        ArrayList<Pic_urls> pic_urlsList = status.getPic_urls();
-        if (pic_urlsList != null) {
-            int i = 0;
-            for (; i < pic_urlsList.size(); i++) {
-                // 获得图片控件的引用
-                SimpleDraweeView picView = imgHM.get(i);
+        // 获得图片数组
+        String[] pic_urls = Util.getPicList(status.getBmiddle_pic());
+        int i = 0, leng = pic_urls.length;
+        // 因为截断为空的时候会默认给一个为""的字符串,给索引为0的数组中
+        if (pic_urls[0] != "") {
 
-                picView.setImageURI(Uri.parse(pic_urlsList.get(i).getThumbnail_pic()));
+//            holder.gridLayout.removeAllViews();
+//            int count = leng > 4 ? 3 : 2;
+//            holder.gridLayout.setColumnCount(count);
+//            for (int j = 0; j < leng; j++) {
+//                holder.gridLayout.addView(
+//                        holder.imgHM.get(j),
+//                        new GridLayout.LayoutParams(
+//                                GridLayout.spec(j / count, 0, GridLayout.CENTER, 1),
+//                                GridLayout.spec(j % count, 0, GridLayout.CENTER, 1)));
+//
+//            }
+            for (; i < pic_urls.length; i++) {
+                // 获得图片控件的引用
+                SimpleDraweeView picView = holder.imgHM.get(i);
+                picView.setImageURI(Uri.parse(pic_urls[i]));
+                picView.setAspectRatio(0.6f);
                 picView.setVisibility(View.VISIBLE);
             }
-            // 多余的控件隐藏
-            for (; i < 9; i++) {
-                imgHM.get(i).setVisibility(View.GONE);
-
-            }
+        }
+        // 多余的控件隐藏
+        for (; i < 9; i++) {
+            holder.imgHM.get(i).setVisibility(View.GONE);
         }
 
+
+        // 因为截断为空的时候会默认给一个为""的字符串,给索引为0的数
+//        if (pic_urls[0] != "" && leng > 0) {
+//            holder.gridLayout.removeAllViews();
+//            int count = leng > 4 ? 3 : 2;
+//            holder.gridLayout.setColumnCount(count);
+//
+//            for (int i = 0; i < leng; i++) {
+//                Log.e("54321", pic_urls[i]);
+//                // 设置视图的属性
+//                SimpleDraweeView picView = (SimpleDraweeView) inflater.inflate(R.layout.grid_item, null);
+//                picView.setImageURI(Uri.parse(pic_urls[i]));
+//                // 布局参数
+//                // 1 视图
+//                // 2 布局参数
+//                holder.gridLayout.addView(
+//                        picView,
+//                        new GridLayout.LayoutParams(
+//                                GridLayout.spec(i / count, 1, GridLayout.CENTER, 1),
+//                                GridLayout.spec(i % count, 1, GridLayout.CENTER, 1)));
+//            }
+//        }
 
 
         return convertView;
@@ -137,6 +169,15 @@ public class WeiboAdapter extends BaseAdapter {
         TextView text_time;
         TextView text_device;
         TextView text_word;
+        TextView text_tran;
+        TextView text_comment;
+        TextView text_zan;
+        RelativeLayout reLayout_weibo_tra;
+        RelativeLayout reLayout_weibo_com;
+        RelativeLayout reLayout_weibo_zan;
+        ImageView img_zan;
+        GridLayout gridLayout;
+        HashMap<Integer, SimpleDraweeView> imgHM = new HashMap<>();
         SimpleDraweeView img_weibo1;
         SimpleDraweeView img_weibo2;
         SimpleDraweeView img_weibo3;
@@ -146,13 +187,6 @@ public class WeiboAdapter extends BaseAdapter {
         SimpleDraweeView img_weibo7;
         SimpleDraweeView img_weibo8;
         SimpleDraweeView img_weibo9;
-        TextView text_tran;
-        TextView text_comment;
-        TextView text_zan;
-        RelativeLayout reLayout_weibo_tra;
-        RelativeLayout reLayout_weibo_com;
-        RelativeLayout reLayout_weibo_zan;
-        ImageView img_zan;
 
         public Holder(View v) {
             img_icon = (SimpleDraweeView) v.findViewById(R.id.imageView_wei_icon);
@@ -161,6 +195,14 @@ public class WeiboAdapter extends BaseAdapter {
             text_time = (TextView) v.findViewById(R.id.textView_weibo_time);
             text_device = (TextView) v.findViewById(R.id.textView_weibo_device);
             text_word = (TextView) v.findViewById(R.id.textView_weibo_word);
+            text_tran = (TextView) v.findViewById(R.id.textView_weibo_tra);
+            text_comment = (TextView) v.findViewById(R.id.textView_weibo_com);
+            text_zan = (TextView) v.findViewById(R.id.textView_weibo_zan);
+            reLayout_weibo_tra = (RelativeLayout) v.findViewById(R.id.reLayout_weibo_tra);
+            reLayout_weibo_com = (RelativeLayout) v.findViewById(R.id.reLayout_weibo_com);
+            reLayout_weibo_zan = (RelativeLayout) v.findViewById(R.id.reLayout_weibo_zan);
+            img_zan = (ImageView) v.findViewById(R.id.imageView_weibo_zan);
+            gridLayout = (GridLayout) v.findViewById(R.id.gridLayout_v7);
             img_weibo1 = (SimpleDraweeView) v.findViewById(R.id.imageView_weibo1);
             img_weibo2 = (SimpleDraweeView) v.findViewById(R.id.imageView_weibo2);
             img_weibo3 = (SimpleDraweeView) v.findViewById(R.id.imageView_weibo3);
@@ -170,13 +212,6 @@ public class WeiboAdapter extends BaseAdapter {
             img_weibo7 = (SimpleDraweeView) v.findViewById(R.id.imageView_weibo7);
             img_weibo8 = (SimpleDraweeView) v.findViewById(R.id.imageView_weibo8);
             img_weibo9 = (SimpleDraweeView) v.findViewById(R.id.imageView_weibo9);
-            text_tran = (TextView) v.findViewById(R.id.textView_weibo_tra);
-            text_comment = (TextView) v.findViewById(R.id.textView_weibo_com);
-            text_zan = (TextView) v.findViewById(R.id.textView_weibo_zan);
-            reLayout_weibo_tra = (RelativeLayout) v.findViewById(R.id.reLayout_weibo_tra);
-            reLayout_weibo_com = (RelativeLayout) v.findViewById(R.id.reLayout_weibo_com);
-            reLayout_weibo_zan = (RelativeLayout) v.findViewById(R.id.reLayout_weibo_zan);
-            img_zan = (ImageView) v.findViewById(R.id.imageView_weibo_zan);
             imgHM.put(0, img_weibo1);
             imgHM.put(1, img_weibo2);
             imgHM.put(2, img_weibo3);

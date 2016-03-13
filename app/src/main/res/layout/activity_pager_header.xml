@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/tools"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="@android:color/white"
+        android:elevation="1dp"
+        android:padding="8dp">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/img_wbPage_icon"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            fresco:roundedCornerRadius="180dp"
+            fresco:roundingBorderColor="@color/colorBlue"
+            fresco:roundingBorderWidth="1dp" />
+
+        <android.support.v7.widget.GridLayout
+            android:id="@+id/gridLayout_weibo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/text_wbPage_word"
+            android:padding="1dp"
+            app:columnCount="3"
+            app:rowCount="3">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/img_wbPage1"
+                android:layout_width="114dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:visibility="gone"
+                app:actualImageScaleType="focusCrop"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1"
+                fresco:progressBarAutoRotateInterval="5000" />
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/img_wbPage2"
+                android:layout_width="114dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:scaleType="centerCrop"
+                android:visibility="gone"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1"
+                fresco:progressBarAutoRotateInterval="5000" />
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/img_wbPage3"
+                android:layout_width="114dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:scaleType="centerCrop"
+                android:visibility="gone"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1"
+                fresco:progressBarAutoRotateInterval="5000" />
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/img_wbPage4"
+                android:layout_width="114dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="centerCrop"
+                android:visibility="gone"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1"
+                fresco:progressBarAutoRotateInterval="5000" />
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/img_wbPage5"
+                android:layout_width="114dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="centerCrop"
+                android:visibility="gone"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1"
+                fresco:progressBarAutoRotateInterval="5000" />
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/img_wbPage6"
+                android:layout_width="114dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="centerCrop"
+                android:visibility="gone"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1"
+                fresco:progressBarAutoRotateInterval="5000" />
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/img_wbPage7"
+                android:layout_width="114dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="centerCrop"
+                android:visibility="gone"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1"
+                fresco:progressBarAutoRotateInterval="5000" />
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/img_wbPage8"
+                android:layout_width="114dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="centerCrop"
+                android:visibility="gone"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1"
+                fresco:progressBarAutoRotateInterval="5000" />
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/img_wbPage9"
+                android:layout_width="114dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="centerCrop"
+                android:visibility="gone"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1"
+                fresco:progressBarAutoRotateInterval="5000" />
+
+        </android.support.v7.widget.GridLayout>
+
+
+        <TextView
+            android:id="@+id/text_wbPage_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/img_wbPage_icon"
+            android:layout_marginLeft="6dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="4dp"
+            android:layout_toEndOf="@+id/img_wbPage_icon"
+            android:layout_toRightOf="@+id/img_wbPage_icon"
+            android:text="一脸懵逼"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/text_wbPage_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/text_wbPage_name"
+            android:layout_alignStart="@+id/text_wbPage_name"
+            android:layout_below="@+id/text_wbPage_name"
+            android:layout_marginTop="6dp"
+            android:text="14分钟前"
+            android:textSize="10dp" />
+
+        <TextView
+            android:id="@+id/text_wbPage_device"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/text_wbPage_time"
+            android:layout_marginLeft="7dp"
+            android:layout_marginStart="7dp"
+            android:layout_toEndOf="@+id/text_wbPage_time"
+            android:layout_toRightOf="@+id/text_wbPage_time"
+            android:text="来自小米4S"
+            android:textSize="10dp" />
+
+        <TextView
+            android:id="@+id/line3"
+            android:layout_width="match_parent"
+            android:layout_height="6dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/img_wbPage_icon" />
+
+        <TextView
+            android:id="@+id/text_wbPage_word"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/line3"
+            android:text="这里是正文" />
+
+        <ImageView
+            android:id="@+id/img_wbPage_collect"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/text_wbPage_name"
+            android:src="@drawable/shoucang" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/relativeLayout10"
+        android:background="#fff">
+
+        <TextView
+            android:id="@+id/tv_zhuanfa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="转发 0"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_pinglun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@+id/tv_zhuanfa"
+            android:text="评论 0"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_zan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:text="赞 0"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+</RelativeLayout>

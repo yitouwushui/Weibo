@@ -1,333 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:ptr="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".weibo.WeiboPageActivity">
 
-    <com.yitouwushui.weibo.weibo.MyScrollView
-        android:id="@+id/myScrollView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/linearLayout8"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:text="New Text">
+    <RelativeLayout
+        android:id="@+id/tobar"
+        android:layout_width="match_parent"
+        android:background="@android:color/white"
+        android:elevation="2dp"
+        android:layout_height="48dp">
 
-        <RelativeLayout
-            android:id="@+id/container"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true">
+            android:layout_centerVertical="true"
+            android:src="@drawable/back" />
 
-            <RelativeLayout
-                android:id="@+id/relative_wbPage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="微博正文"
+            android:textColor="#000"
+            android:textSize="16sp" />
 
-                <TextView
-                    android:id="@+id/line"
-                    android:layout_width="match_parent"
-                    android:layout_height="8dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true" />
-
-                <TextView
-                    android:id="@+id/line2"
-                    android:layout_width="match_parent"
-                    android:layout_height="16dp"
-                    android:layout_below="@+id/relativeLayout10"
-                    android:layout_centerHorizontal="true" />
-
-                <RelativeLayout
-                    android:id="@+id/relativeLayout10"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_below="@+id/fragment2"
-                    android:background="@android:color/white"
-                    android:elevation="1dp"
-                    android:padding="8dp">
-
-                    <com.facebook.drawee.view.SimpleDraweeView
-                        android:id="@+id/img_wbPage_icon"
-                        android:layout_width="52dp"
-                        android:layout_height="52dp"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentTop="true"
-                        fresco:roundedCornerRadius="180dp"
-                        fresco:roundingBorderColor="@color/colorBlue"
-                        fresco:roundingBorderWidth="1dp" />
-
-                    <LinearLayout
-                        android:id="@+id/linearLayout9"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_below="@+id/text_wbPage_word"
-                        android:orientation="horizontal"
-                        android:padding="1dp">
-
-                        <com.facebook.drawee.view.SimpleDraweeView
-                            android:id="@+id/img_wbPage1"
-                            android:layout_width="64dp"
-                            android:layout_height="128dp"
-                            android:layout_weight="1"
-                            android:visibility="gone" />
-
-                        <com.facebook.drawee.view.SimpleDraweeView
-                            android:id="@+id/img_wbPage2"
-                            android:layout_width="64dp"
-                            android:layout_height="128dp"
-                            android:layout_weight="1"
-                            android:visibility="gone" />
-
-                        <com.facebook.drawee.view.SimpleDraweeView
-                            android:id="@+id/img_wbPage3"
-                            android:layout_width="64dp"
-                            android:layout_height="128dp"
-                            android:layout_weight="1"
-                            android:visibility="gone" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/linearLayout10"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_below="@+id/linearLayout9"
-                        android:orientation="horizontal"
-                        android:padding="1dp">
-
-                        <com.facebook.drawee.view.SimpleDraweeView
-                            android:id="@+id/img_wbPage4"
-                            android:layout_width="64dp"
-                            android:layout_height="128dp"
-                            android:layout_weight="1"
-                            android:visibility="gone" />
-
-                        <com.facebook.drawee.view.SimpleDraweeView
-                            android:id="@+id/img_wbPage5"
-                            android:layout_width="64dp"
-                            android:layout_height="128dp"
-                            android:layout_weight="1"
-                            android:visibility="gone" />
-
-                        <com.facebook.drawee.view.SimpleDraweeView
-                            android:id="@+id/img_wbPage6"
-                            android:layout_width="64dp"
-                            android:layout_height="128dp"
-                            android:layout_weight="1"
-                            android:visibility="gone" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/linearLayout11"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_below="@+id/linearLayout10"
-                        android:orientation="horizontal"
-                        android:padding="1dp">
-
-                        <com.facebook.drawee.view.SimpleDraweeView
-                            android:id="@+id/img_wbPage7"
-                            android:layout_width="64dp"
-                            android:layout_height="128dp"
-                            android:layout_weight="1"
-                            android:visibility="gone" />
-
-                        <com.facebook.drawee.view.SimpleDraweeView
-                            android:id="@+id/img_wbPage8"
-                            android:layout_width="64dp"
-                            android:layout_height="128dp"
-                            android:layout_weight="1"
-                            android:visibility="gone" />
-
-                        <com.facebook.drawee.view.SimpleDraweeView
-                            android:id="@+id/img_wbPage9"
-                            android:layout_width="64dp"
-                            android:layout_height="128dp"
-                            android:layout_weight="1"
-                            android:visibility="gone" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:id="@+id/text_wbPage_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignTop="@+id/img_wbPage_icon"
-                        android:layout_marginLeft="6dp"
-                        android:layout_marginStart="6dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_toEndOf="@+id/img_wbPage_icon"
-                        android:layout_toRightOf="@+id/img_wbPage_icon"
-                        android:text="一脸懵逼"
-                        android:textColor="@android:color/holo_orange_dark"
-                        android:textSize="16dp" />
-
-                    <TextView
-                        android:id="@+id/text_wbPage_time"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignLeft="@+id/text_wbPage_name"
-                        android:layout_alignStart="@+id/text_wbPage_name"
-                        android:layout_below="@+id/text_wbPage_name"
-                        android:layout_marginTop="6dp"
-                        android:text="14分钟前"
-                        android:textSize="10dp" />
-
-                    <TextView
-                        android:id="@+id/text_wbPage_device"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignTop="@+id/text_wbPage_time"
-                        android:layout_marginLeft="7dp"
-                        android:layout_marginStart="7dp"
-                        android:layout_toEndOf="@+id/text_wbPage_time"
-                        android:layout_toRightOf="@+id/text_wbPage_time"
-                        android:text="来自小米4S"
-                        android:textSize="10dp" />
-
-                    <TextView
-                        android:id="@+id/line3"
-                        android:layout_width="match_parent"
-                        android:layout_height="6dp"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_below="@+id/img_wbPage_icon" />
-
-                    <TextView
-                        android:id="@+id/text_wbPage_word"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_below="@+id/line3"
-                        android:text="这里是正文" />
-
-                    <ImageView
-                        android:id="@+id/img_wbPage_collect"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignTop="@+id/text_wbPage_name"
-                        android:src="@drawable/shoucang" />
-
-                </RelativeLayout>
-
-                <fragment
-                    android:id="@+id/fragment2"
-                    android:name="com.yitouwushui.weibo.main.TopFragment"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    tools:layout="@layout/fragment_top" />
-            </RelativeLayout>
-
-            <LinearLayout
-                android:id="@+id/lineLayout_wb_tab2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/relative_wbPage"
-                android:orientation="vertical">
-
-                <android.support.design.widget.TabLayout
-                    android:id="@+id/tab_wbPage"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_below="@+id/relative_wbPage"
-                    android:background="@android:color/white"
-                    android:elevation="1dp"
-                    android:fillViewport="false" />
-
-                <ListView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/listView"
-                    android:layout_above="@+id/linearLayout8"
-                    android:layout_centerHorizontal="true" />
-
-            </LinearLayout>
-
-            <TextView
-            android:id="@+id/textView10"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/lineLayout_wb_tab2"
-            android:gravity="center"
-            android:text="测试内容\n测试内容\n测试内容\n测试内容\n测试内容\n测试内容\n测试内容\n测试内容\n测试内容\n测试内容\n测试内容\n测试内容\n测试内容\n测试内容\n测试内容\n测试内容\n测试内容\n测试内容\n测试内容\n测试内容\n测试内容\n测试内容\n测试内容\n测试内容\n测试内容\n测试内容\n测试内容\n测试内容\n测试内容\n测试内容\n测试内容\n测试内容\n测试内容\n测试内容\n测试内容\n测试内容\n测试内容\n测试内容\n测试内容\n测试内容\n测试内容\n测试内容\n测试内容\n测试内容\n测试内容\n测试内容\n测试内容\n测试内容"
-            android:textSize="30dp" />
+            android:layout_height="0.5dp"
+            android:layout_alignParentBottom="true"
+            android:background="#999" />
+    </RelativeLayout>
 
 
-        </RelativeLayout>
-    </com.yitouwushui.weibo.weibo.MyScrollView>
+    <com.yitouwushui.weibo.view.pulltorefreshview.PullToRefreshListView
+        android:id="@+id/ptr_lv"
+        android:elevation="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btn"
+        android:cacheColorHint="#00000000"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:fadingEdge="none"
+        android:fastScrollEnabled="false"
+        android:footerDividersEnabled="false"
+        android:headerDividersEnabled="false"
+        android:smoothScrollbar="true"
+        ptr:ptrAnimationStyle="flip"
+        ptr:ptrAutoLoad="false"
+        ptr:ptrMode="both"
+        android:layout_below="@+id/tobar">
 
+    </com.yitouwushui.weibo.view.pulltorefreshview.PullToRefreshListView>
 
     <LinearLayout
-        android:id="@+id/linearLayout8"
+        android:id="@+id/btn"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
         android:background="@android:color/white"
-        android:elevation="3dp"
-        android:gravity="center_vertical"
+        android:elevation="2dp"
         android:orientation="horizontal">
 
         <RelativeLayout
             android:id="@+id/re_wbPage_tra"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center">
+            android:layout_weight="1">
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true">
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/imageView4"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
                     android:src="@drawable/zhuanfa" />
 
                 <TextView
-                    android:id="@+id/textView"
                     android:layout_width="wrap_content"
-                    android:layout_height="24dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_toEndOf="@+id/imageView4"
-                    android:layout_toRightOf="@+id/imageView4"
+                    android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="转发" />
-            </RelativeLayout>
+
+            </LinearLayout>
         </RelativeLayout>
 
         <RelativeLayout
@@ -336,80 +103,103 @@
             android:layout_height="match_parent"
             android:layout_weight="1">
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true">
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/imageView7"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
                     android:src="@drawable/pinglun" />
 
                 <TextView
-                    android:id="@+id/textView3"
                     android:layout_width="wrap_content"
-                    android:layout_height="24dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_toEndOf="@+id/imageView7"
-                    android:layout_toRightOf="@+id/imageView7"
+                    android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="评论" />
-            </RelativeLayout>
 
+            </LinearLayout>
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/re_wbPage_zan"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center">
+            android:layout_weight="1">
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true">
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/img_wbPage_zan"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
+                    android:id="@+id/iv_zan"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
                     android:src="@drawable/weibo_zan" />
 
                 <TextView
-                    android:id="@+id/textView4"
                     android:layout_width="wrap_content"
-                    android:layout_height="24dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_toEndOf="@+id/img_wbPage_zan"
-                    android:layout_toRightOf="@+id/img_wbPage_zan"
+                    android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="赞" />
-            </RelativeLayout>
+
+            </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/lineLayout_wb_tab1"
+    <RelativeLayout
+        android:id="@+id/tab"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:orientation="vertical"></LinearLayout>
+        android:layout_height="40dp"
+        android:background="#fff"
+        android:elevation="1dp"
+        android:visibility="gone"
+        android:layout_below="@+id/tobar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
+        <TextView
+            android:id="@+id/tv_zhuanfa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="转发 0"
+            android:textSize="16sp" />
 
+        <TextView
+            android:id="@+id/tv_pinglun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@+id/tv_zhuanfa"
+            android:text="评论 0"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_zan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:text="赞 0"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_alignParentBottom="true"
+            />
+
+    </RelativeLayout>
 </RelativeLayout>

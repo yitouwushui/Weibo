@@ -20,15 +20,22 @@ public class App {
     //令牌
     public static final String ACCESS_TOKEN = "access_token";
 
+    // 登录
     public static final int MESSAGE_LOGIN = 1;
 
+    // 用户
     public static final int MESSAGE_USER = 2;
 
+    // 公共微博
     public static final int MESSAGE_PUBLIC_STATUS = 3;
 
-    public static final int MESSAGE_FRIENDS = 4;
+    // 关注微博
+    public static final int MESSAGE_FRIENDS_STATUS = 4;
 
-    public static final int MESSAGE_COMMENTS = 5;
+    // 评论
+    public static final int MESSAGE_STATUS_COMMENTS = 5;
 
+    public static final int MESSAGE_FRIENDS_USERS = 6;
+    public static final int MESSAGE_MY_STATUS = 7;
 }
 

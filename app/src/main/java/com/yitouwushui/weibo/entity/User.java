@@ -5,6 +5,9 @@ import com.orm.SugarRecord;
 import java.io.Serializable;
 
 
+/**
+ * 用户
+ */
 public class User extends SugarRecord implements Serializable {
 
 

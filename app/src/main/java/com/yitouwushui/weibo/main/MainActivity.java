@@ -1,5 +1,6 @@
 package com.yitouwushui.weibo.main;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -14,6 +15,10 @@ import android.widget.Toast;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.yitouwushui.weibo.Login.LoginActivity;
 import com.yitouwushui.weibo.R;
+import com.yitouwushui.weibo.entity.AccessToken;
+import com.yitouwushui.weibo.entity.User;
+import com.yitouwushui.weibo.me.FriendsActivity;
+import com.yitouwushui.weibo.me.MyStatusActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     MessageFragment messageFragment;
     BottomAdapter bottomAdapter;
     GridView gridView_bottom;
+    User user;
+    AccessToken accessToken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,15 +40,15 @@ public class MainActivity extends AppCompatActivity {
 
         Fresco.initialize(this);
 
-//        if (savedInstanceState == null) {
-            discoveryFragment = new DiscoveryFragment();
-            firstPageFragment = new FirstPageFragment();
-            meFragment = new MeFragment();
-            messageFragment = new MessageFragment();
-//        }
-
+        discoveryFragment = new DiscoveryFragment();
+        firstPageFragment = new FirstPageFragment();
+        meFragment = new MeFragment();
+        messageFragment = new MessageFragment();
 
         init();
+
+        accessToken = AccessToken.findById(AccessToken.class, 1);
+        user = User.findById(User.class, Long.valueOf(accessToken.getUid()));
     }
 
     /**
@@ -69,7 +76,8 @@ public class MainActivity extends AppCompatActivity {
                         setVisibility(messageFragment);
                         break;
                     case 2:
-                        showMsg("+");
+                        Intent intent = new Intent(MainActivity.this, UpdateActivity.class);
+                        startActivity(intent);
                         break;
                     case 3:
                         setVisibility(discoveryFragment);
@@ -108,15 +116,27 @@ public class MainActivity extends AppCompatActivity {
     public void exit(View view) {
     }
 
-    public void weiBo(View view) {
+    public void myStatus(View view) {
+        Intent intent = new Intent(this, MyStatusActivity.class);
+        intent.putExtra("idstr", user.getIdstr());
+        startActivity(intent);
 
     }
 
     public void follow(View view) {
-
+        Intent intent = new Intent(this, FriendsActivity.class);
+        intent.putExtra("userid", user.getIdstr());
+        intent.putExtra("title", "全部关注");
+        intent.putExtra("isFollow", true);
+        startActivity(intent);
     }
 
     public void following(View view) {
+        Intent intent = new Intent(this, FriendsActivity.class);
+        intent.putExtra("userid", user.getIdstr());
+        intent.putExtra("title", "粉丝");
+        intent.putExtra("isFollow", false);
+        startActivity(intent);
     }
 
     public void homePage(View view) {
@@ -125,4 +145,5 @@ public class MainActivity extends AppCompatActivity {
     public void freshen(View view) {
         discoveryFragment.freshen();
     }
+
 }

@@ -15,7 +15,7 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.yitouwushui.weibo.R;
 import com.yitouwushui.weibo.entity.Comments;
 import com.yitouwushui.weibo.entity.User;
-import com.yitouwushui.weibo.util.TimeUtil;
+import com.yitouwushui.weibo.utils.Util;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,12 +37,13 @@ public class WBPageAdapter extends BaseAdapter {
     }
 
     public void setData(List<Comments> data) {
-        this.data = data;
+        this.data.clear();
+        this.data.addAll(data);
     }
 
     @Override
     public int getCount() {
-        return 0;
+        return data.size();
     }
 
     @Override
@@ -78,14 +79,17 @@ public class WBPageAdapter extends BaseAdapter {
         Comments comments = data.get(position);
         User user = comments.getUser();
 
-        Log.e("适配器", comments.toString());
         holder.img_icon.setImageURI(Uri.parse(user.getAvatar_large()));
         holder.text_name.setText(user.getScreen_name());
-        holder.text_time.setText(TimeUtil.stringTranslateTime(comments.getCreated_at()));
+        holder.text_time.setText(Util.stringTranslateTime(comments.getCreated_at()));
         holder.text_word.setText(comments.getText());
         holder.img_zan.setImageResource(isZan ? R.drawable.weibo_zanh : R.drawable.weibo_zan);
 
         return v;
+    }
+
+    public void clear(){
+        data.clear();
     }
 
     /**
@@ -100,11 +104,11 @@ public class WBPageAdapter extends BaseAdapter {
         TextView text_zan_count;
 
         public Holder(View v) {
-            img_icon = (SimpleDraweeView) v.findViewById(R.id.imageView_wei_icon);
-            text_name = (TextView) v.findViewById(R.id.textView_weibo_name);
-            text_time = (TextView) v.findViewById(R.id.textView_weibo_time);
-            text_word = (TextView) v.findViewById(R.id.textView_weibo_word);
-            img_zan = (ImageView) v.findViewById(R.id.imageView_weibo_zan);
+            img_icon = (SimpleDraweeView) v.findViewById(R.id.img_com_icon);
+            text_name = (TextView) v.findViewById(R.id.text_com_name);
+            text_time = (TextView) v.findViewById(R.id.text_com_time);
+            text_word = (TextView) v.findViewById(R.id.text_com_word);
+            img_zan = (ImageView) v.findViewById(R.id.img_user_zan);
             text_zan_count = (TextView) v.findViewById(R.id.text_zan_count);
         }
     }

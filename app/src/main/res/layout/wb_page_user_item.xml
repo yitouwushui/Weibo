@@ -2,8 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="8dp">
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:id="@+id/relativeLayout11"
@@ -18,8 +17,8 @@
 
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/img_com_icon"
-            android:layout_width="52dp"
-            android:layout_height="52dp"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
@@ -39,7 +38,7 @@
             android:layout_toRightOf="@+id/img_com_icon"
             android:text="一脸懵逼"
             android:textColor="@android:color/holo_orange_dark"
-            android:textSize="18dp" />
+            android:textSize="14dp" />
 
         <TextView
             android:id="@+id/text_com_time"
@@ -82,12 +81,19 @@
             android:id="@+id/text_zan_count"
             android:layout_width="wrap_content"
             android:layout_height="24dp"
-            android:padding="2dp"
             android:layout_alignEnd="@+id/text_com_word"
             android:layout_alignRight="@+id/text_com_word"
             android:layout_alignTop="@+id/img_user_zan"
             android:gravity="center"
-            />
+            android:padding="2dp" />
 
     </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/textView"
+        android:layout_below="@+id/relativeLayout11"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

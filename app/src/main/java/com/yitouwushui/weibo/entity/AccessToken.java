@@ -4,7 +4,9 @@ import com.orm.SugarRecord;
 
 import java.io.Serializable;
 
-
+/**
+ * 用户令牌
+ */
 public class AccessToken extends SugarRecord implements Serializable {
 
     String access_token;

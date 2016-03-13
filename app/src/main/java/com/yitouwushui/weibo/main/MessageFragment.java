@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import com.yitouwushui.weibo.R;
 
 /**
- * A simple {@link Fragment} subclass.
+ * 消息
  */
 public class MessageFragment extends Fragment {
 

@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.yitouwushui.weibo.me.HomeActivity">
+
+    <RelativeLayout
+        android:id="@+id/home_header"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/groupback"
+        android:elevation="2dp">
+
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/header_Icon"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="22dp"
+            android:onClick="homePage"
+            fresco:roundedCornerRadius="180dp"
+            fresco:roundingBorderColor="@color/colorBlue"
+            fresco:roundingBorderWidth="1dp" />
+
+
+        <TextView
+            android:id="@+id/header_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/header_Icon"
+            android:layout_alignStart="@+id/header_Icon"
+            android:layout_below="@+id/header_Icon"
+            android:layout_marginTop="10dp"
+            android:text="谈情说梦"
+            android:textColor="#fff"
+            android:textIsSelectable="false"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/introduce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/line"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:hint="这个人很懒~什么都没有留下"
+            android:singleLine="true"
+            android:text="简介:啥？你说啥？"
+            android:textColor="#fff" />
+
+        <TextView
+            android:id="@+id/header_follow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/line"
+            android:layout_toLeftOf="@+id/line"
+            android:layout_toStartOf="@+id/line"
+            android:text="关注"
+            android:textColor="#fff" />
+
+        <TextView
+            android:id="@+id/line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/header_name"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text="  丨  "
+            android:textColor="#fff" />
+
+        <TextView
+            android:id="@+id/hreader_follower"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/line"
+            android:layout_toEndOf="@+id/line"
+            android:layout_toRightOf="@+id/line"
+            android:text="粉丝"
+            android:textColor="#fff" />
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/back_white" />
+
+    </RelativeLayout>
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_below="@+id/home_header"
+        android:layout_centerHorizontal="true"
+        android:background="#ecf0f1"></TableLayout>
+
+    <TextView
+        android:id="@+id/line2"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_below="@+id/tableLayout"
+        android:layout_centerHorizontal="true" />
+
+    <GridLayout
+        android:id="@+id/home_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line2"
+        android:layout_centerHorizontal="true"
+        android:columnCount="2"
+        android:padding="8dp"
+
+        android:rowCount="7">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_margin="8dp"
+            android:layout_row="0"
+            android:text="所在地" />
+
+        <TextView
+            android:id="@+id/location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_margin="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_row="0"
+            android:text="湖南 长沙"
+            android:textColor="#272636" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_margin="8dp"
+            android:layout_row="1"
+            android:text="学校" />
+
+        <TextView
+            android:id="@+id/school"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_margin="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_row="1"
+            android:text="中南林业科技大学"
+            android:textColor="#272636" />
+
+        <TextView
+            android:layout_margin="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_row="2"
+            android:text="简介" />
+
+        <TextView
+            android:id="@+id/introduce2"
+            android:layout_width="245dp"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_margin="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_row="2"
+            android:layout_marginRight="16dp"
+            android:textColor="#272636"
+
+            android:text="喜欢一个人，既怕她知道，又怕她不知道，但最怕的是她知道却装作不知道" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_margin="8dp"
+            android:layout_row="3"
+            android:text="等级" />
+
+        <TextView
+            android:id="@+id/dengji"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_margin="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_row="3"
+            android:text="LV 18"
+            android:textColor="#272636" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_margin="8dp"
+            android:layout_row="4"
+            android:text="阳光信用" />
+
+        <TextView
+            android:id="@+id/xinyong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_margin="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_row="4"
+            android:text="性用极好"
+            android:textColor="#272636" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_margin="8dp"
+            android:layout_row="5"
+            android:text="注册时间" />
+
+        <TextView
+            android:id="@+id/create_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_margin="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_row="5"
+            android:text="2012-12-12"
+            android:textColor="#272636" />
+    </GridLayout>
+
+</RelativeLayout>

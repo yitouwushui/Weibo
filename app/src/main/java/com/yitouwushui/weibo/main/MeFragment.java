@@ -3,7 +3,6 @@ package com.yitouwushui.weibo.main;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +16,7 @@ import com.yitouwushui.weibo.entity.User;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ * 用户界面
  */
 public class MeFragment extends Fragment {
 
@@ -39,21 +38,6 @@ public class MeFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_me, container, false);
         // 初始化
         init(v);
-
-
-//        isFirst = getActivity().getPreferences(Context.MODE_APPEND).getBoolean("isFirst", true);
-//        if (isFirst ) {
-//            Log.e("me!!!!!!!!!!!!!", "第一次加载");
-//            Intent intent = getActivity().getIntent();
-//            Bundle bundle = intent.getExtras();
-//            user = (User) bundle.getSerializable("user");
-//            isFirst = getActivity().getPreferences(Context.MODE_APPEND).edit().putBoolean("isFirst", false).commit();
-//            Log.e("-----------------me", String.valueOf(isFirst));
-//        } else {
-//            user = User.findById(User.class, 1);
-//            Log.e("-------------第二次加载", user.toString());
-//        }
-
         AccessToken accessToken = AccessToken.findById(AccessToken.class, 1);
         User user = User.findById(User.class, Long.valueOf(accessToken.getUid()));
         if (user != null) {
@@ -68,9 +52,9 @@ public class MeFragment extends Fragment {
     }
 
     private void init(View v) {
-        img_icon = (SimpleDraweeView) v.findViewById(R.id.imageViewIcon);
-        text_name = (TextView) v.findViewById(R.id.textViewName);
-        text_introduce = (TextView) v.findViewById(R.id.textViewIntroduce);
+        img_icon = (SimpleDraweeView) v.findViewById(R.id.header_Icon);
+        text_name = (TextView) v.findViewById(R.id.header_name);
+        text_introduce = (TextView) v.findViewById(R.id.introduce);
         button_weibo = (Button) v.findViewById(R.id.button_weibo);
         button_follow = (Button) v.findViewById(R.id.button_follow);
         button_follower = (Button) v.findViewById(R.id.button_follower);

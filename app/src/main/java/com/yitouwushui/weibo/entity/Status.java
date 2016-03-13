@@ -5,6 +5,9 @@ import com.orm.SugarRecord;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * 微博
+ */
 public class Status extends SugarRecord implements Serializable {
     private String created_at;
     private String mid;

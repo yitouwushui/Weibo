@@ -67,9 +67,9 @@ public class LoginActivity extends AppCompatActivity {
                     netQuery.friendStatusQuery(handler);
                     netQuery.publicStatusQuery(handler);
                     break;
-                case App.MESSAGE_PUBLIC_STATUS:
-                    break;
-                case App.MESSAGE_FRIENDS:
+//                case App.MESSAGE_PUBLIC_STATUS:
+//                    break;
+                case App.MESSAGE_FRIENDS_STATUS:
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
                     finish();

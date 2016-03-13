@@ -12,7 +12,7 @@
     <!-- TODO: Update blank fragment layout -->
 
     <com.facebook.drawee.view.SimpleDraweeView
-        android:id="@+id/imageViewIcon"
+        android:id="@+id/header_Icon"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_alignParentLeft="true"
@@ -25,12 +25,12 @@
 
 
     <TextView
-        android:id="@+id/textViewName"
+        android:id="@+id/header_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textViewIntroduce"
-        android:layout_alignStart="@+id/textViewIntroduce"
-        android:layout_alignTop="@+id/imageViewIcon"
+        android:layout_alignLeft="@+id/introduce"
+        android:layout_alignStart="@+id/introduce"
+        android:layout_alignTop="@+id/header_Icon"
         android:layout_marginTop="8dp"
         android:text="谈情说梦"
         android:textColor="@android:color/black"
@@ -38,15 +38,15 @@
         android:textSize="16dp" />
 
     <TextView
-        android:id="@+id/textViewIntroduce"
+        android:id="@+id/introduce"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageViewIcon"
+        android:layout_alignBottom="@+id/header_Icon"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="9dp"
         android:layout_marginStart="9dp"
-        android:layout_toEndOf="@+id/imageViewIcon"
-        android:layout_toRightOf="@+id/imageViewIcon"
+        android:layout_toEndOf="@+id/header_Icon"
+        android:layout_toRightOf="@+id/header_Icon"
         android:text="简介:啥？你说啥？"
         android:textSize="12dp" />
 
