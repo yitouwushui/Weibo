@@ -119,7 +119,7 @@ public class MyStatusActivity extends AppCompatActivity {
         mRefreshView = (PullToRefreshListView) findViewById(R.id.my_status_lv);
         listView_my_status = mRefreshView.getRefreshableView();
         img_back = (ImageView) findViewById(R.id.my_status_back);
-        idstr = getIntent().getStringExtra("idstr");
+        idstr = getIntent().getStringExtra(App.ACTION_USERID);
         img_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

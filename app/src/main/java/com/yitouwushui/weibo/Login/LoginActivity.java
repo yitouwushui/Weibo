@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
         // 给请求队列赋值
         netQuery = NetQueryImpl.getInstance(LoginActivity.this);
 
-        accessToken = AccessToken.findById(AccessToken.class, 1);
+        accessToken = AccessToken.findById(AccessToken.class, 4);
 //        boolean isFirst = getPreferences(MODE_APPEND).getBoolean("isFirst", true);
         if (accessToken == null) {
             webView = (WebView) findViewById(R.id.webView);

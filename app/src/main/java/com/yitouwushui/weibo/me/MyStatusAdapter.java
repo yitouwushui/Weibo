@@ -17,6 +17,7 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.yitouwushui.weibo.R;
 import com.yitouwushui.weibo.entity.Status;
 import com.yitouwushui.weibo.entity.User;
+import com.yitouwushui.weibo.utils.IntentUtils;
 import com.yitouwushui.weibo.utils.Util;
 
 import java.util.ArrayList;
@@ -107,18 +108,6 @@ public class MyStatusAdapter extends BaseAdapter {
         int i = 0, leng = pic_urls.length;
         // 因为截断为空的时候会默认给一个为""的字符串,给索引为0的数组中
         if (pic_urls[0] != "") {
-
-//            holder.gridLayout.removeAllViews();
-//            int count = leng > 4 ? 3 : 2;
-//            holder.gridLayout.setColumnCount(count);
-//            for (int j = 0; j < leng; j++) {
-//                holder.gridLayout.addView(
-//                        holder.imgHM.get(j),
-//                        new GridLayout.LayoutParams(
-//                                GridLayout.spec(j / count, 0, GridLayout.CENTER, 1),
-//                                GridLayout.spec(j % count, 0, GridLayout.CENTER, 1)));
-//
-//            }
             for (; i < pic_urls.length; i++) {
                 // 获得图片控件的引用
                 SimpleDraweeView picView = holder.imgHM.get(i);
@@ -131,30 +120,6 @@ public class MyStatusAdapter extends BaseAdapter {
         for (; i < 9; i++) {
             holder.imgHM.get(i).setVisibility(View.GONE);
         }
-
-
-        // 因为截断为空的时候会默认给一个为""的字符串,给索引为0的数
-//        if (pic_urls[0] != "" && leng > 0) {
-//            holder.gridLayout.removeAllViews();
-//            int count = leng > 4 ? 3 : 2;
-//            holder.gridLayout.setColumnCount(count);
-//
-//            for (int i = 0; i < leng; i++) {
-//                Log.e("54321", pic_urls[i]);
-//                // 设置视图的属性
-//                SimpleDraweeView picView = (SimpleDraweeView) inflater.inflate(R.layout.grid_item, null);
-//                picView.setImageURI(Uri.parse(pic_urls[i]));
-//                // 布局参数
-//                // 1 视图
-//                // 2 布局参数
-//                holder.gridLayout.addView(
-//                        picView,
-//                        new GridLayout.LayoutParams(
-//                                GridLayout.spec(i / count, 1, GridLayout.CENTER, 1),
-//                                GridLayout.spec(i % count, 1, GridLayout.CENTER, 1)));
-//            }
-//        }
-
 
         return convertView;
     }
@@ -237,10 +202,10 @@ public class MyStatusAdapter extends BaseAdapter {
             int id = v.getId();
             switch (id) {
                 case R.id.reLayout_weibo_tra:
-                    showMsg("转发" + list_position);
+                    IntentUtils.startTranlate(context,data.get(list_position).getIdstr());
                     break;
                 case R.id.reLayout_weibo_com:
-                    showMsg("评论" + list_position);
+                    IntentUtils.startComment(context, data.get(list_position).getIdstr());
                     break;
                 case R.id.reLayout_weibo_zan:
                     showMsg("赞" + list_position);
@@ -249,7 +214,7 @@ public class MyStatusAdapter extends BaseAdapter {
                     showMsg("收藏" + list_position);
                     break;
                 case R.id.imageView_wei_icon:
-                    showMsg("跳转个人信息" + list_position);
+                    IntentUtils.startHome(context, data.get(list_position).getIdstr());
                     break;
             }
         }

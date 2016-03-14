@@ -38,7 +38,14 @@ public class MeFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_me, container, false);
         // 初始化
         init(v);
-        AccessToken accessToken = AccessToken.findById(AccessToken.class, 1);
+        // 显示信息
+        show();
+
+        return v;
+    }
+
+    private void show() {
+        AccessToken accessToken = AccessToken.findById(AccessToken.class, 2);
         User user = User.findById(User.class, Long.valueOf(accessToken.getUid()));
         if (user != null) {
             img_icon.setImageURI(Uri.parse(user.getAvatar_large()));
@@ -48,7 +55,6 @@ public class MeFragment extends Fragment {
             button_follow.setText(user.getFriends_count() + "\n关注");
             button_follower.setText(user.getFollowers_count() + "\n粉丝");
         }
-        return v;
     }
 
     private void init(View v) {

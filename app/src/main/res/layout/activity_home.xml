@@ -10,6 +10,7 @@
         android:id="@+id/home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:elevation="2dp"
         android:visibility="gone">
 
         <RelativeLayout
@@ -17,8 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:background="@android:color/white"
-            android:elevation="2dp"
-            android:visibility="visible">
+            android:elevation="1dp">
 
             <View
                 android:layout_width="match_parent"
@@ -47,12 +47,14 @@
                 android:textColor="#272636" />
         </RelativeLayout>
 
-        <TableLayout
+        <android.support.design.widget.TabLayout
             android:id="@+id/tableLayout_home"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_below="@+id/tobar"
-            android:layout_centerHorizontal="true"></TableLayout>
+            android:layout_centerHorizontal="true"
+            android:background="#ecf0f1"
+            android:elevation="1dp"/>
 
         <TextView
             android:id="@+id/line3"
@@ -74,13 +76,11 @@
         android:cacheColorHint="#00000000"
         android:divider="@null"
         android:dividerHeight="0dp"
-        android:elevation="1dp"
         android:fadingEdge="none"
         android:fastScrollEnabled="false"
         android:footerDividersEnabled="false"
         android:headerDividersEnabled="false"
         android:smoothScrollbar="true"
-        android:visibility="visible"
         ptr:ptrAnimationStyle="flip"
         ptr:ptrAutoLoad="false"
         ptr:ptrMode="both">
@@ -104,6 +104,8 @@
             android:layout_alignParentBottom="true"
             android:layout_toEndOf="@+id/home"
             android:layout_toRightOf="@+id/home"
+            android:background="#fff"
+            android:elevation="2dp"
             android:text="关注" />
     </LinearLayout>
 

@@ -154,6 +154,17 @@ public class WeiboPageActivity extends AppCompatActivity {
 
         mRefreshView = (PullToRefreshListView) findViewById(R.id.ptr_lv);
         mListView = mRefreshView.getRefreshableView();
+        // 添加头选项
+        header = getLayoutInflater().inflate(R.layout.activity_pager_header, null);
+        mListView.addHeaderView(header);
+        initHeader(header);
+        mAdapter = new WBPageAdapter(this, commentsList);
+        mListView.setAdapter(mAdapter);
+
+        img_zan = (ImageView) findViewById(R.id.iv_zan);
+
+        tab = findViewById(R.id.tab);
+
         mRefreshView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
             @Override
             public void onRefresh(PullToRefreshBase<ListView> refreshView) {
@@ -175,7 +186,9 @@ public class WeiboPageActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+            public void onScroll(
+                    AbsListView view, int firstVisibleItem,
+                    int visibleItemCount, int totalItemCount) {
                 // 是否显示悬浮的逻辑
                 int[] location = new int[2];
                 header.getLocationInWindow(location);
@@ -194,15 +207,6 @@ public class WeiboPageActivity extends AppCompatActivity {
                 }
             }
         });
-        header = getLayoutInflater().inflate(R.layout.activity_pager_header, null);
-        mListView.addHeaderView(header);
-        initHeader(header);
-        mAdapter = new WBPageAdapter(this, commentsList);
-        mListView.setAdapter(mAdapter);
-
-        img_zan = (ImageView) findViewById(R.id.iv_zan);
-
-        tab = findViewById(R.id.tab);
 
     }
 
@@ -237,7 +241,7 @@ public class WeiboPageActivity extends AppCompatActivity {
         picHashMap.put(6, img_weibo7);
         picHashMap.put(7, img_weibo8);
         picHashMap.put(8, img_weibo9);
-        gridLayout = (GridLayout) findViewById(R.id.gridLayout_weibo);
+        gridLayout = (GridLayout) header.findViewById(R.id.gridLayout_weibo);
         tvRecomendCount2 = (TextView) header.findViewById(R.id.tv_pinglun);
         tvZhuanfaCount2 = (TextView) header.findViewById(R.id.tv_zhuanfa);
         tvZanCount2 = (TextView) header.findViewById(R.id.tv_zan);

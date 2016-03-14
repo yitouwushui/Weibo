@@ -97,10 +97,11 @@
                 android:id="@+id/imageView_weibo1"
                 android:layout_width="114dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="1dp"
                 android:layout_weight="0"
                 android:visibility="gone"
                 app:actualImageScaleType="focusCrop"
-                app:layout_columnWeight="1"
+                app:layout_columnWeight="0"
                 app:layout_rowWeight="1"
                 fresco:progressBarAutoRotateInterval="5000" />
 
@@ -108,80 +109,88 @@
                 android:id="@+id/imageView_weibo2"
                 android:layout_width="114dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="1dp"
                 android:layout_weight="0"
                 android:scaleType="centerCrop"
                 android:visibility="gone"
-                app:layout_columnWeight="1"
+                app:layout_columnWeight="0"
                 app:layout_rowWeight="1" />
 
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/imageView_weibo3"
                 android:layout_width="114dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="1dp"
                 android:layout_weight="0"
                 android:scaleType="centerCrop"
                 android:visibility="gone"
-                app:layout_columnWeight="1"
+                app:layout_columnWeight="0"
                 app:layout_rowWeight="1" />
 
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/imageView_weibo4"
                 android:layout_width="114dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="1dp"
                 android:layout_weight="1"
                 android:scaleType="centerCrop"
                 android:visibility="gone"
-                app:layout_columnWeight="1"
+                app:layout_columnWeight="0"
                 app:layout_rowWeight="1" />
 
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/imageView_weibo5"
                 android:layout_width="114dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="1dp"
                 android:layout_weight="1"
                 android:scaleType="centerCrop"
                 android:visibility="gone"
-                app:layout_columnWeight="1"
+                app:layout_columnWeight="0"
                 app:layout_rowWeight="1" />
 
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/imageView_weibo6"
                 android:layout_width="114dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="1dp"
                 android:layout_weight="1"
                 android:scaleType="centerCrop"
                 android:visibility="gone"
-                app:layout_columnWeight="1"
+                app:layout_columnWeight="0"
                 app:layout_rowWeight="1" />
 
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/imageView_weibo7"
                 android:layout_width="114dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="1dp"
                 android:layout_weight="1"
                 android:scaleType="centerCrop"
                 android:visibility="gone"
-                app:layout_columnWeight="1"
+                app:layout_columnWeight="0"
                 app:layout_rowWeight="1" />
 
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/imageView_weibo8"
                 android:layout_width="114dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="1dp"
                 android:layout_weight="1"
                 android:scaleType="centerCrop"
                 android:visibility="gone"
-                app:layout_columnWeight="1"
+                app:layout_columnWeight="0"
                 app:layout_rowWeight="1" />
 
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/imageView_weibo9"
                 android:layout_width="114dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="1dp"
                 android:layout_weight="1"
                 android:scaleType="centerCrop"
                 android:visibility="gone"
-                app:layout_columnWeight="1"
+                app:layout_columnWeight="0"
                 app:layout_rowWeight="1" />
 
         </android.support.v7.widget.GridLayout>

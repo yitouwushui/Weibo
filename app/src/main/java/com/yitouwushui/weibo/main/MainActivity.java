@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
@@ -13,12 +12,14 @@ import android.widget.GridView;
 import android.widget.Toast;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.yitouwushui.weibo.Login.App;
 import com.yitouwushui.weibo.Login.LoginActivity;
 import com.yitouwushui.weibo.R;
 import com.yitouwushui.weibo.entity.AccessToken;
 import com.yitouwushui.weibo.entity.User;
 import com.yitouwushui.weibo.me.FriendsActivity;
 import com.yitouwushui.weibo.me.MyStatusActivity;
+import com.yitouwushui.weibo.utils.IntentUtils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
         init();
 
-        accessToken = AccessToken.findById(AccessToken.class, 1);
+        accessToken = AccessToken.findById(AccessToken.class, 8);
         user = User.findById(User.class, Long.valueOf(accessToken.getUid()));
     }
 
@@ -114,32 +115,42 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void exit(View view) {
+        boolean isExit = AccessToken.delete(accessToken);
+        if (isExit) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            showMsg("退出成功");
+            finish();
+        } else {
+            showMsg("退出失败");
+        }
     }
 
     public void myStatus(View view) {
         Intent intent = new Intent(this, MyStatusActivity.class);
-        intent.putExtra("idstr", user.getIdstr());
+        intent.putExtra(App.ACTION_USERID, user.getIdstr());
         startActivity(intent);
 
     }
 
     public void follow(View view) {
         Intent intent = new Intent(this, FriendsActivity.class);
-        intent.putExtra("userid", user.getIdstr());
-        intent.putExtra("title", "全部关注");
-        intent.putExtra("isFollow", true);
+        intent.putExtra(App.ACTION_USERID, user.getIdstr());
+        intent.putExtra(App.ACTION_FOLLOW_TITLE, "全部关注");
+        intent.putExtra(App.ACTION_ISFOLLOW, true);
         startActivity(intent);
     }
 
     public void following(View view) {
         Intent intent = new Intent(this, FriendsActivity.class);
-        intent.putExtra("userid", user.getIdstr());
-        intent.putExtra("title", "粉丝");
-        intent.putExtra("isFollow", false);
+        intent.putExtra(App.ACTION_USERID, user.getIdstr());
+        intent.putExtra(App.ACTION_FOLLOW_TITLE, "粉丝");
+        intent.putExtra(App.ACTION_ISFOLLOW, false);
         startActivity(intent);
     }
 
     public void homePage(View view) {
+        IntentUtils.startHome(this, user.getIdstr());
     }
 
     public void freshen(View view) {

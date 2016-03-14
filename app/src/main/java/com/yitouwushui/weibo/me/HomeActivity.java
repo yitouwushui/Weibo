@@ -1,5 +1,9 @@
 package com.yitouwushui.weibo.me;
 
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Handler;
+import android.os.Message;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,8 +16,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.yitouwushui.weibo.Login.App;
 import com.yitouwushui.weibo.R;
+import com.yitouwushui.weibo.entity.User;
+import com.yitouwushui.weibo.net.NetQueryImpl;
 import com.yitouwushui.weibo.utils.UIUtils;
+import com.yitouwushui.weibo.utils.Util;
 import com.yitouwushui.weibo.view.pulltorefreshview.PullToRefreshBase;
 import com.yitouwushui.weibo.view.pulltorefreshview.PullToRefreshListView;
 
@@ -45,14 +53,106 @@ public class HomeActivity extends AppCompatActivity {
     ListView mListView;
     View header;
 
+    User user;
+    // id
+    String idstr;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+//        setContentView(R.layout.activity_home);
+//        // 初始化主页面
+//        initHome();
 
-        // 初始化主页面
-        initHome();
 
+        getData();
+
+        View v = getLayoutInflater().inflate(R.layout.activity_home_header, null);
+        setContentView(v);
+        initHeader(v);
+
+
+    }
+
+    /**
+     * 获得意图id
+     */
+    private void showParam() {
+        img_icon.setImageURI(Uri.parse(user.getAvatar_large()));
+        tv_name.setText(user.getScreen_name());
+        tv_follow.setText("关注: " + user.getFriends_count());
+        tv_follower.setText("粉丝: " + user.getFollowers_count());
+        tv_introduce.setText(user.getDescription());
+        tv_location.setText(user.getLocation());
+        tv_school.setText(user.getRemark() != null ? user.getRemark() : "无");
+        tv_introduce2.setText(user.getDescription());
+        tv_create_time.setText(Util.stringTranslateTime(user.getCreated_at()));
+
+    }
+
+    private void getData() {
+        Intent intent = getIntent();
+        idstr = intent.getStringExtra(App.ACTION_USERID);
+        NetQueryImpl.getInstance(this).userOtherQuery(handler, idstr);
+    }
+
+    Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            if (msg.what == App.MESSAGE_USER) {
+                user = (User) msg.obj;
+                showParam();
+            }
+
+        }
+    };
+
+
+    /**
+     * 初始化头文件
+     */
+    private void initHeader(View header) {
+        img_back = (ImageView) header.findViewById(R.id.back);
+        img_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        img_icon = (SimpleDraweeView) header.findViewById(R.id.header_Icon);
+        tv_name = (TextView) header.findViewById(R.id.header_name);
+        tv_follow = (TextView) header.findViewById(R.id.header_follow);
+        tv_follower = (TextView) header.findViewById(R.id.hreader_follower);
+        tv_introduce = (TextView) header.findViewById(R.id.introduce);
+        tab = (TabLayout) header.findViewById(R.id.tableLayout);
+        tv_location = (TextView) header.findViewById(R.id.location);
+        tv_school = (TextView) header.findViewById(R.id.school);
+        tv_introduce2 = (TextView) header.findViewById(R.id.introduce2);
+        tv_grade = (TextView) header.findViewById(R.id.dengji);
+        tv_xingyong = (TextView) header.findViewById(R.id.xinyong);
+        tv_create_time = (TextView) header.findViewById(R.id.create_time);
+        tab.addTab(tab.newTab().setText("主页"));
+        tab.addTab(tab.newTab().setText("微博"));
+    }
+
+    /**
+     * 初始化主页面控件
+     */
+    private void initHome() {
+        rela_header = (RelativeLayout) findViewById(R.id.home);
+        img_back2 = (ImageView) findViewById(R.id.home_back);
+        tx_title = (TextView) findViewById(R.id.home_titile);
+        tab2 = (TabLayout) findViewById(R.id.tableLayout_home);
+
+        mRefreshListView = (PullToRefreshListView) findViewById(R.id.home_lv);
+        bt_follow = (Button) findViewById(R.id.home_follow);
+        mListView = mRefreshListView.getRefreshableView();
+
+        /**
+         * 上下滑动监听
+         */
         mRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
             @Override
             public void onRefresh(PullToRefreshBase<ListView> refreshView) {
@@ -66,42 +166,16 @@ public class HomeActivity extends AppCompatActivity {
         });
 
 
+        header = getLayoutInflater().inflate(R.layout.activity_home_header, null);
+        mListView.addHeaderView(header);
+        // 初始化头文件控件
+        initHeader(header);
 
-    }
-
-    /**
-     * 初始化头文件
-     */
-    private void initHeader() {
-        img_back = (ImageView) findViewById(R.id.back);
-        img_icon = (SimpleDraweeView) findViewById(R.id.header_Icon);
-        tv_name = (TextView) findViewById(R.id.header_name);
-        tv_follow = (TextView) findViewById(R.id.header_follow);
-        tv_follower = (TextView) findViewById(R.id.hreader_follower);
-        tv_introduce = (TextView) findViewById(R.id.introduce);
-        tab = (TabLayout) findViewById(R.id.tableLayout);
-        tv_location = (TextView) findViewById(R.id.location);
-        tv_school = (TextView) findViewById(R.id.school);
-        tv_introduce2 = (TextView) findViewById(R.id.introduce2);
-        tv_grade = (TextView) findViewById(R.id.dengji);
-        tv_xingyong = (TextView) findViewById(R.id.xinyong);
-        tv_create_time = (TextView) findViewById(R.id.create_time);
-    }
-
-    /**
-     * 初始化主页面控件
-     */
-    private void initHome() {
-        rela_header = (RelativeLayout) findViewById(R.id.home);
-        img_back2 = (ImageView) findViewById(R.id.home_back);
-        tx_title = (TextView) findViewById(R.id.home_titile);
-        tab2 = (TabLayout) findViewById(R.id.tableLayout_home);
-        mRefreshListView = (PullToRefreshListView) findViewById(R.id.home_lv);
-        bt_follow = (Button) findViewById(R.id.home_follow);
-        mListView = mRefreshListView.getRefreshableView();
+        tab2.addTab(tab2.newTab().setText("主页"));
+        tab2.addTab(tab2.newTab().setText("微博"));
 
         /**
-         * 滑动监听
+         * 显示隐藏
          */
         mRefreshListView.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
@@ -119,7 +193,7 @@ public class HomeActivity extends AppCompatActivity {
                 int topHeight = UIUtils.getStatusBarHeight(HomeActivity.this)
                         + UIUtils.dip2px(HomeActivity.this, 92); // 顶部高度，状态栏，标题栏，以及这个Tab的高度
                 boolean needShowTab = true;
-                if (firstVisibleItem == 0){
+                if (firstVisibleItem == 0) {
                     if (location[1] - topHeight > -header.getMeasuredHeight()) {
                         needShowTab = false;
                     }
@@ -131,9 +205,5 @@ public class HomeActivity extends AppCompatActivity {
                 }
             }
         });
-
-        header = getLayoutInflater().inflate(R.layout.activity_home_header, null);
-        // 初始化头文件控件
-        initHeader();
     }
 }

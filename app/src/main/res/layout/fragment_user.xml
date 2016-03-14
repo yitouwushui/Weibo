@@ -41,14 +41,15 @@
         android:id="@+id/introduce"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/header_Icon"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="9dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginStart="9dp"
-        android:layout_toEndOf="@+id/header_Icon"
-        android:layout_toRightOf="@+id/header_Icon"
         android:text="简介:啥？你说啥？"
-        android:textSize="12dp" />
+        android:textSize="12dp"
+        android:layout_marginTop="6dp"
+        android:layout_below="@+id/header_name"
+        android:layout_toRightOf="@+id/header_Icon"
+        android:layout_toEndOf="@+id/header_Icon"
+        android:layout_marginRight="10dp" />
 
     <ImageView
         android:id="@+id/imageView5"

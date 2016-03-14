@@ -1,59 +1,220 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context="com.yitouwushui.weibo.main.UpdateActivity">
 
-    <EditText
+    <RelativeLayout
+        android:id="@+id/update_top"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="#fff"
+        android:elevation="2dp">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="名字"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="50dp"
+            android:layout_height="25dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:background="@color/colorBlue"
+            android:onClick="doComplete"
+            android:text="确定"
+            android:textColor="@color/white" />
+
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="12dp"
+            android:onClick="finish"
+            android:src="@drawable/back" />
+    </RelativeLayout>
+
+    <android.support.v7.widget.GridLayout
+        android:id="@+id/gridView_update"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/edit_word"
-        android:layout_above="@+id/button_ensure"
+        android:background="#fff"
+        android:elevation="1dp"
+        app:columnCount="3"
+        app:rowCount="3"
+        android:layout_below="@+id/editLayout"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/relativeLayout_button">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="确定"
-        android:id="@+id/button_ensure"
-        style="@style/Base.Widget.AppCompat.Button.Borderless"
-        android:layout_marginRight="71dp"
-        android:layout_marginEnd="71dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_margin="2dp"
+            android:scaleType="fitXY"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1" />
 
-    <ImageView
-        android:layout_width="48dp"
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_margin="2dp"
+            android:scaleType="fitXY"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_margin="2dp"
+            android:scaleType="fitXY"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_margin="2dp"
+            android:scaleType="fitXY"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_margin="2dp"
+            android:scaleType="fitXY"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_margin="2dp"
+            android:scaleType="fitXY"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1" />
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_margin="2dp"
+            android:scaleType="fitXY"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1" />
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_margin="2dp"
+            android:scaleType="fitXY"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1" />
+
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_margin="2dp"
+            android:scaleType="fitXY"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1" />
+    </android.support.v7.widget.GridLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout_button"
+        android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:id="@+id/img_pic"
-        android:src="@drawable/pic"
-        android:layout_marginRight="67dp"
-        android:layout_marginEnd="67dp"
+        android:background="#fff"
+        android:elevation="2dp"
+        android:orientation="horizontal"
         android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/button_ensure"
-        android:layout_toStartOf="@+id/button_ensure" />
-
-    <TextView
-        android:id="@+id/text_titile"
-        android:gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="24dp"
-        android:text="正文"
-        android:textSize="18dp"
-        android:textColor="@android:color/black"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="36dp"
-        android:layout_height="32dp"
-        android:src="@drawable/back"
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true">
+
+        <ImageView
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="3dp"
+            android:onClick="clickPicture"
+            android:src="@drawable/icon_pic" />
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:onClick="clickCapture"
+            android:src="@drawable/icon_cap" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="5dp"
+            android:onClick="clickClear"
+            android:src="@drawable/icon_cle" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="1dp"
+        android:background="@color/colorGrayBack"
+        android:layout_below="@+id/update_top"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/editLayout">
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="@null"
+            android:lines="5"
+            android:maxLength="140" />
+
+        <TextView
+            android:id="@+id/word_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0/160"
+            android:layout_below="@+id/editText"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
 
 </RelativeLayout>

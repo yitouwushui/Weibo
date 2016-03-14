@@ -3,6 +3,8 @@
     package="com.yitouwushui.weibo">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:name="com.orm.SugarApp"
@@ -25,7 +27,6 @@
             android:value="com.yitouwushui.weibo" />
 
         <activity android:name=".main.MainActivity" />
-        <activity android:name=".me.SettingActivity" />
         <activity android:name=".weibo.WeiboPageActivity" />
         <activity android:name=".Login.LoginActivity">
             <intent-filter>
@@ -34,7 +35,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".main.UpdateActivity" />
+        <activity android:name=".main.UpdateActivity"
+            android:windowSoftInputMode="stateVisible"/>
         <activity android:name=".weibo.TranCommentActivity" />
         <activity android:name=".me.FriendsActivity" />
         <activity android:name=".me.MyStatusActivity" />

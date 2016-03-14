@@ -171,9 +171,9 @@ public class FriendsActivity extends AppCompatActivity {
         });
         // 从意图获得参数
         Intent intent = getIntent();
-        idstr = intent.getStringExtra("userid");
-        String title = intent.getStringExtra("title");
-        isFollow = intent.getBooleanExtra("isFollow", false);
+        idstr = intent.getStringExtra(App.ACTION_USERID);
+        String title = intent.getStringExtra(App.ACTION_FOLLOW_TITLE);
+        isFollow = intent.getBooleanExtra(App.ACTION_ISFOLLOW, false);
         textView.setText(title);
 
     }

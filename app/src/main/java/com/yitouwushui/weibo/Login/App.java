@@ -36,6 +36,25 @@ public class App {
     public static final int MESSAGE_STATUS_COMMENTS = 5;
 
     public static final int MESSAGE_FRIENDS_USERS = 6;
+
     public static final int MESSAGE_MY_STATUS = 7;
+
+    // 转发标题
+    public static final String ACTION_TRANLATE_TITLE = "ACTION_TRANLATE_TITLE";
+
+    // 转发微博id
+    public static final String ACTION_TRANLATE_STATUS_IDSTR = "ACTION_TRANLATE_STATUS_IDSTR";
+    // 评论标题
+    public static final String ACTION_COMMENT_TITLE = "ACTION_COMMENT_TITLE";
+    // 评论微博id
+    public static final String ACTION_COMMENT_STATUS_IDSTR = "ACTION_COMMENT_STATUS_IDSTR";
+    // 发微博
+    public static final String ACTION_UPDATE = "ACTION_UPDATE";
+    // 关注和粉丝用户Id
+    public static final String ACTION_USERID = "ACTION_USERID";
+    // 关注和粉丝的标题
+    public static final String ACTION_FOLLOW_TITLE = "ACTION_FOLLOW_TITLE";
+    // 是粉丝还是关注
+    public static final String ACTION_ISFOLLOW = "ACTION_ISFOLLOW";
 }
 
