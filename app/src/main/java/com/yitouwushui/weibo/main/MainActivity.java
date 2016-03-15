@@ -13,13 +13,13 @@ import android.widget.Toast;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.yitouwushui.weibo.Login.App;
-import com.yitouwushui.weibo.Login.LoginActivity;
 import com.yitouwushui.weibo.R;
 import com.yitouwushui.weibo.entity.AccessToken;
 import com.yitouwushui.weibo.entity.User;
 import com.yitouwushui.weibo.me.FriendsActivity;
 import com.yitouwushui.weibo.me.MyStatusActivity;
 import com.yitouwushui.weibo.utils.IntentUtils;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -77,8 +77,7 @@ public class MainActivity extends AppCompatActivity {
                         setVisibility(messageFragment);
                         break;
                     case 2:
-                        Intent intent = new Intent(MainActivity.this, UpdateActivity.class);
-                        startActivity(intent);
+                        IntentUtils.startUpdate(MainActivity.this);
                         break;
                     case 3:
                         setVisibility(discoveryFragment);
@@ -116,14 +115,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void exit(View view) {
         boolean isExit = AccessToken.delete(accessToken);
-        if (isExit) {
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
-            showMsg("退出成功");
-            finish();
-        } else {
-            showMsg("退出失败");
-        }
+//        if (isExit) {
+//            Intent intent = new Intent(this, LoginActivity.class);
+//            startActivity(intent);
+//            showMsg("退出成功");
+//            finish();
+//        } else {
+//            showMsg("退出失败");
+//        }
     }
 
     public void myStatus(View view) {
