@@ -214,6 +214,7 @@ public class MyStatusAdapter extends BaseAdapter {
                     showMsg("收藏" + list_position);
                     break;
                 case R.id.imageView_wei_icon:
+                    Log.e("12321321",data.get(list_position).getIdstr());
                     IntentUtils.startHome(context, data.get(list_position).getIdstr());
                     break;
             }

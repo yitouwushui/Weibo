@@ -65,11 +65,12 @@ public class HomeActivity extends AppCompatActivity {
 //        initHome();
 
 
-        getData();
+
 
         View v = getLayoutInflater().inflate(R.layout.activity_home_header, null);
         setContentView(v);
         initHeader(v);
+        getData();
 
 
     }
