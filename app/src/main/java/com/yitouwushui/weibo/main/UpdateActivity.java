@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.yitouwushui.weibo.Login.App;
 import com.yitouwushui.weibo.R;
 import com.yitouwushui.weibo.utils.ImageOprator;
 
@@ -24,6 +25,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * 发微博、评论、转发
+ */
 public class UpdateActivity extends AppCompatActivity {
 
     GridLayout gridLayout;
@@ -41,6 +45,7 @@ public class UpdateActivity extends AppCompatActivity {
 
     EditText editText;
     TextView textView;
+    TextView textView_title;
 
     ArrayList<ImageView> views = new ArrayList<>();
     ArrayList<Uri> pictures = new ArrayList<>();
@@ -50,13 +55,17 @@ public class UpdateActivity extends AppCompatActivity {
     private static final int REQUEST_CAPTURE = 0x1013;    //照相请求码
 
 
+    /**
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update);
-        gridLayout = (GridLayout) findViewById(R.id.gridView_update);
-        textView = (TextView) findViewById(R.id.word_size);
-        editText = (EditText) findViewById(R.id.editText);
+
+        init();
+
+        showParam();
 
         editText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -67,7 +76,7 @@ public class UpdateActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (s != null) {
-                    textView.setText(String.valueOf(s.length())+ "/140");
+                    textView.setText(String.valueOf(s.length()) + "/140");
                 }
             }
 
@@ -77,7 +86,13 @@ public class UpdateActivity extends AppCompatActivity {
             }
         });
 
-        init();
+    }
+
+    private void showParam() {
+        Intent intent = getIntent();
+        String title = intent.getStringExtra(App.ACTION_UPDATE);
+        textView_title.setText(title);
+
     }
 
     private void init() {
@@ -99,6 +114,10 @@ public class UpdateActivity extends AppCompatActivity {
         views.add(imageView7);
         views.add(imageView8);
         views.add(imageView9);
+        gridLayout = (GridLayout) findViewById(R.id.gridView_update);
+        textView = (TextView) findViewById(R.id.word_size);
+        editText = (EditText) findViewById(R.id.editText);
+        textView_title = (TextView) findViewById(R.id.update_title);
     }
 
     //选择图片
@@ -145,6 +164,9 @@ public class UpdateActivity extends AppCompatActivity {
         for (ImageView imageView : views) {
             imageView.setVisibility(View.INVISIBLE);
         }
+        // 清除放好的图片
+        pictures.clear();
+
     }
 
     /**

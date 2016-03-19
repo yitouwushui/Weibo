@@ -35,13 +35,17 @@ public class App {
     // 评论
     public static final int MESSAGE_STATUS_COMMENTS = 5;
 
+    // 关注的用户
     public static final int MESSAGE_FRIENDS_USERS = 6;
 
+    // 我的微博
     public static final int MESSAGE_MY_STATUS = 7;
+
+    // 添加收藏
+    public static final int MESSAGE_ADD_FAVORITES = 8;
 
     // 转发标题
     public static final String ACTION_TRANLATE_TITLE = "ACTION_TRANLATE_TITLE";
-
     // 转发微博id
     public static final String ACTION_TRANLATE_STATUS_IDSTR = "ACTION_TRANLATE_STATUS_IDSTR";
     // 评论标题
@@ -54,6 +58,7 @@ public class App {
     public static final String ACTION_USERID = "ACTION_USERID";
     // 关注和粉丝的标题
     public static final String ACTION_FOLLOW_TITLE = "ACTION_FOLLOW_TITLE";
+
     // 是粉丝还是关注
     public static final String ACTION_ISFOLLOW = "ACTION_ISFOLLOW";
 }
