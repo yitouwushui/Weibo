@@ -18,6 +18,7 @@ import com.yitouwushui.weibo.entity.AccessToken;
 import com.yitouwushui.weibo.entity.User;
 import com.yitouwushui.weibo.me.FriendsActivity;
 import com.yitouwushui.weibo.me.MyStatusActivity;
+import com.yitouwushui.weibo.net.NetQueryImpl;
 import com.yitouwushui.weibo.utils.IntentUtils;
 
 
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         init();
 
-        accessToken = AccessToken.findById(AccessToken.class, 8);
+        accessToken = AccessToken.findById(AccessToken.class, NetQueryImpl.accessTokenID);
         user = User.findById(User.class, Long.valueOf(accessToken.getUid()));
     }
 
@@ -114,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void exit(View view) {
-        boolean isExit = AccessToken.delete(accessToken);
+//        boolean isExit = AccessToken.delete(accessToken);
 //        if (isExit) {
 //            Intent intent = new Intent(this, LoginActivity.class);
 //            startActivity(intent);

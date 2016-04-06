@@ -23,6 +23,8 @@ public class LoginActivity extends AppCompatActivity {
     int countBack;
     AccessToken accessToken;
     NetQueryImpl netQuery;
+    int currentID;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +33,8 @@ public class LoginActivity extends AppCompatActivity {
 
         // 给请求队列赋值
         netQuery = NetQueryImpl.getInstance(LoginActivity.this);
-
-        accessToken = AccessToken.findById(AccessToken.class, 4);
+        currentID = getPreferences(MODE_PRIVATE).getInt(App.CURRENT_ID, 0);
+        accessToken = AccessToken.findById(AccessToken.class, currentID);
 //        boolean isFirst = getPreferences(MODE_APPEND).getBoolean("isFirst", true);
         if (accessToken == null) {
             webView = (WebView) findViewById(R.id.webView);
@@ -40,12 +42,16 @@ public class LoginActivity extends AppCompatActivity {
             webView.getSettings().setSupportZoom(false);// 支持缩放
 //        webView.getSettings().setBlockNetworkImage(false);// 是否加载图片
 //            isFirst = getPreferences(MODE_PRIVATE).edit().putBoolean("isFirst", false).commit();
+            currentID += 1;
+            getPreferences(MODE_PRIVATE).edit().putInt(App.CURRENT_ID, currentID).commit();
+            NetQueryImpl.accessTokenID = currentID;
             webView.getSettings().setDisplayZoomControls(true);
             webView.getSettings().setBuiltInZoomControls(true);
             webView.loadUrl(App.URL);
             webView.setWebViewClient(new MyClient());
             Log.e("------------", "第一次加载");
         } else {
+            NetQueryImpl.accessTokenID = currentID;
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             Log.e("------------", "重复次加载");
             startActivity(intent);

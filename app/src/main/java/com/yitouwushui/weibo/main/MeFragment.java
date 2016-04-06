@@ -13,6 +13,7 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.yitouwushui.weibo.R;
 import com.yitouwushui.weibo.entity.AccessToken;
 import com.yitouwushui.weibo.entity.User;
+import com.yitouwushui.weibo.net.NetQueryImpl;
 
 
 /**
@@ -45,7 +46,7 @@ public class MeFragment extends Fragment {
     }
 
     private void show() {
-        AccessToken accessToken = AccessToken.findById(AccessToken.class, 2);
+        AccessToken accessToken = AccessToken.findById(AccessToken.class, NetQueryImpl.accessTokenID);
         User user = User.findById(User.class, Long.valueOf(accessToken.getUid()));
         if (user != null) {
             img_icon.setImageURI(Uri.parse(user.getAvatar_large()));

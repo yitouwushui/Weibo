@@ -1,6 +1,8 @@
 package com.yitouwushui.weibo.Login;
 
 
+import android.content.Context;
+
 public class App {
 
     public static final String URL = "https://api.weibo.com/oauth2/authorize?client_id=3078393470&redirect_uri=https://api.weibo.com/oauth2/default.html";
@@ -61,5 +63,11 @@ public class App {
 
     // 是粉丝还是关注
     public static final String ACTION_ISFOLLOW = "ACTION_ISFOLLOW";
+
+    /**
+     * 当前用户编号
+     */
+    public static final String CURRENT_ID = "CURRENT_ID";
+
 }
 
