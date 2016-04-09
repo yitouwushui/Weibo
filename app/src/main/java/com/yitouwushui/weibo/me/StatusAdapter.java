@@ -24,17 +24,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import butterknife.Bind;
+
 /**
- * 首页和发现页面适配器
+ * 微博页面适配器
  */
-public class MyStatusAdapter extends BaseAdapter {
+public class StatusAdapter extends BaseAdapter {
 
     Context context;
     List<Status> data = new ArrayList<>();
     LayoutInflater inflater;
     StringBuilder sourceStart = new StringBuilder("来自 ");
 
-    public MyStatusAdapter(Context context, List<Status> data) {
+    public StatusAdapter(Context context, List<Status> data) {
         this.context = context;
         this.data = data;
         inflater = LayoutInflater.from(context);

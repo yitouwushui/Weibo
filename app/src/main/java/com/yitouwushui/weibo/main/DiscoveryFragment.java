@@ -17,7 +17,7 @@ import com.yitouwushui.weibo.Login.App;
 import com.yitouwushui.weibo.R;
 import com.yitouwushui.weibo.entity.Status;
 import com.yitouwushui.weibo.entity.User;
-import com.yitouwushui.weibo.me.MyStatusAdapter;
+import com.yitouwushui.weibo.me.StatusAdapter;
 import com.yitouwushui.weibo.net.NetQueryImpl;
 import com.yitouwushui.weibo.weibo.WeiboPageActivity;
 
@@ -33,7 +33,7 @@ public class DiscoveryFragment extends Fragment {
     public static final String STATUS_SINGLE = "STATUS_SINGLE";
 
     ListView listView_discovery;
-    MyStatusAdapter discoveryAdapter;
+    StatusAdapter discoveryAdapter;
     List<Status> discoveryData = new LinkedList<>();
 
     public DiscoveryFragment() {
@@ -56,7 +56,7 @@ public class DiscoveryFragment extends Fragment {
 
 
         if (discoveryAdapter == null) {
-            discoveryAdapter = new MyStatusAdapter(getContext(), discoveryData);
+            discoveryAdapter = new StatusAdapter(getContext(), discoveryData);
         }
         listView_discovery.setAdapter(discoveryAdapter);
         listView_discovery.setOnItemClickListener(new FirstListViewListener());

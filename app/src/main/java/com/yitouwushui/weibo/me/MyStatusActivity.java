@@ -29,7 +29,7 @@ public class MyStatusActivity extends AppCompatActivity {
 
     ListView listView_my_status;
     PullToRefreshListView mRefreshView;
-    MyStatusAdapter myStatusAdapter;
+    StatusAdapter myStatusAdapter;
     List<Status> myStatusData = new ArrayList<>();
     ImageView img_back;
     // 查询者的id
@@ -106,7 +106,7 @@ public class MyStatusActivity extends AppCompatActivity {
             myStatusAdapter.notifyDataSetChanged();
             mRefreshView.onRefreshComplete();
         } else {
-            myStatusAdapter = new MyStatusAdapter(this, data);
+            myStatusAdapter = new StatusAdapter(this, data);
             listView_my_status.setAdapter(myStatusAdapter);
             mRefreshView.onRefreshComplete();
         }

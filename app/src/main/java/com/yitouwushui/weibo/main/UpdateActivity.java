@@ -5,7 +5,10 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 import android.provider.MediaStore;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayout;
 import android.text.Editable;
@@ -13,14 +16,18 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.yitouwushui.weibo.Login.App;
 import com.yitouwushui.weibo.R;
+import com.yitouwushui.weibo.net.NetQueryImpl;
 import com.yitouwushui.weibo.utils.ImageOprator;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -29,6 +36,10 @@ import java.util.Date;
  * 发微博、评论、转发
  */
 public class UpdateActivity extends AppCompatActivity {
+
+    String title;
+    String statusIdstr;
+    NetQueryImpl netQuery;
 
     GridLayout gridLayout;
     int i = 0;
@@ -88,13 +99,27 @@ public class UpdateActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * 获得标题，等参数
+     */
     private void showParam() {
+
         Intent intent = getIntent();
-        String title = intent.getStringExtra(App.ACTION_UPDATE);
+        title = intent.getStringExtra(App.ACTION_UPDATE_TITLE);
+        if (title.equals("转发")) {
+            statusIdstr = intent.getStringExtra(App.ACTION_TRANLATE_STATUS_IDSTR);
+        }
+        if (title.equals("评论")) {
+            statusIdstr = intent.getStringExtra(App.ACTION_COMMENT_STATUS_IDSTR);
+        }
         textView_title.setText(title);
+
 
     }
 
+    /**
+     * 初始化
+     */
     private void init() {
         imageView1 = (ImageView) findViewById(R.id.imageView1);
         imageView2 = (ImageView) findViewById(R.id.imageView2);
@@ -118,9 +143,14 @@ public class UpdateActivity extends AppCompatActivity {
         textView = (TextView) findViewById(R.id.word_size);
         editText = (EditText) findViewById(R.id.editText);
         textView_title = (TextView) findViewById(R.id.update_title);
+        netQuery = NetQueryImpl.getInstance(this);
     }
 
-    //选择图片
+    /**
+     * 选择图片
+     *
+     * @param view
+     */
     public void clickPicture(View view) {
         if (i < 9) {
             Intent intent = new Intent();
@@ -139,7 +169,11 @@ public class UpdateActivity extends AppCompatActivity {
         }
     }
 
-    //选择照相
+    /**
+     * 选择照相
+     *
+     * @param view
+     */
     public void clickCapture(View view) {
         if (i < 9) {
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -158,7 +192,11 @@ public class UpdateActivity extends AppCompatActivity {
         }
     }
 
-    //选择清除
+    /**
+     * 选择清除
+     *
+     * @param view
+     */
     public void clickClear(View view) {
         i = 0;
         for (ImageView imageView : views) {
@@ -206,7 +244,11 @@ public class UpdateActivity extends AppCompatActivity {
         }
     }
 
-    //放图片
+    /**
+     * 放图片
+     *
+     * @param bitmap
+     */
     private void setPicture(Bitmap bitmap) {
         if (i < views.size()) {
             views.get(i).setImageBitmap(bitmap);
@@ -214,23 +256,70 @@ public class UpdateActivity extends AppCompatActivity {
         }
     }
 
-    //获得所有图片的Uri
+    /**
+     * 获得图片uri
+     *
+     * @return ArrayList<Uri>
+     */
     private ArrayList<Uri> getPictures() {
         return pictures;
     }
 
+    /**
+     * 获得文本框输入
+     *
+     * @return
+     */
     private String getInput() {
         String input = String.valueOf(editText.getText());
-        return input;
+        String urlStr = null;
+        try {
+            urlStr = URLEncoder.encode(input, "utf-8");
+
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return urlStr;
     }
 
-    //返回活动
+    /**
+     * 返回活动
+     *
+     * @param view
+     */
     public void finish(View view) {
         finish();
     }
 
-    //点击确定
+    /**
+     * 点击确定
+     *
+     * @param view
+     */
     public void doComplete(View view) {
-        // TODO: 16-3-13
+        Intent intent;
+
+        // 本来是只需要发广播，为了熟练两种方法特意分开使用一遍
+        if (title.equals("发微博")) {
+            intent = new Intent();
+            intent.putExtra(App.ACTION_UPDATE_TITLE, title);
+            intent.putExtra(App.ACTION_UPDATE_INPUT, getInput());
+            setResult(RESULT_OK, intent);
+
+            // 发广播
+        } else {
+            if (title.equals("转发")) {
+                intent = new Intent(App.ACTION_TRANLATE);
+                intent.putExtra(App.ACTION_TRANLATE_STATUS_IDSTR, statusIdstr);
+
+            } else {
+                intent = new Intent(App.ACTION_COMMENT);
+                intent.putExtra(App.ACTION_COMMENT_STATUS_IDSTR, statusIdstr);
+            }
+            intent.putExtra(App.ACTION_UPDATE_INPUT, getInput());
+            LocalBroadcastManager.getInstance(getApplicationContext())
+                    .sendBroadcast(intent);
+        }
+        finish();
     }
 }

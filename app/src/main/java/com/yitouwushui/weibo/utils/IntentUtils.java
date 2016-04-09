@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.yitouwushui.weibo.Login.App;
-import com.yitouwushui.weibo.entity.User;
 import com.yitouwushui.weibo.main.UpdateActivity;
 import com.yitouwushui.weibo.me.HomeActivity;
 
@@ -37,7 +36,7 @@ public class IntentUtils {
      */
     public static void startTranlate(Context context, String statusIdstr) {
         Intent intent = new Intent(context, UpdateActivity.class);
-        intent.putExtra(App.ACTION_TRANLATE_TITLE, "转发");
+        intent.putExtra(App.ACTION_UPDATE_TITLE, "转发");
         intent.putExtra(App.ACTION_TRANLATE_STATUS_IDSTR, statusIdstr);
         context.startActivity(intent);
     }
@@ -50,7 +49,7 @@ public class IntentUtils {
      */
     public static void startComment(Context context, String statusIdstr) {
         Intent intent = new Intent(context, UpdateActivity.class);
-        intent.putExtra(App.ACTION_COMMENT_TITLE, "评论");
+        intent.putExtra(App.ACTION_UPDATE_TITLE, "评论");
         intent.putExtra(App.ACTION_COMMENT_STATUS_IDSTR, statusIdstr);
         context.startActivity(intent);
     }
@@ -62,7 +61,8 @@ public class IntentUtils {
      */
     public static void startUpdate(Context context) {
         Intent intent = new Intent(context, UpdateActivity.class);
-        intent.putExtra(App.ACTION_UPDATE, "发微博");
+
+        intent.putExtra(App.ACTION_UPDATE_TITLE, "发微博");
         context.startActivity(intent);
     }
 

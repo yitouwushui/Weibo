@@ -18,7 +18,7 @@ import com.yitouwushui.weibo.Login.App;
 import com.yitouwushui.weibo.R;
 import com.yitouwushui.weibo.entity.Status;
 import com.yitouwushui.weibo.entity.User;
-import com.yitouwushui.weibo.me.MyStatusAdapter;
+import com.yitouwushui.weibo.me.StatusAdapter;
 import com.yitouwushui.weibo.net.NetQueryImpl;
 import com.yitouwushui.weibo.view.pulltorefreshview.PullToRefreshBase;
 import com.yitouwushui.weibo.view.pulltorefreshview.PullToRefreshListView;
@@ -37,7 +37,7 @@ public class FirstPageFragment extends Fragment {
 
     ListView listView_first;
     PullToRefreshListView mRefreshView;
-    MyStatusAdapter statusAdapter;
+    StatusAdapter statusAdapter;
     List<Status> firstData = new LinkedList<>();
     // 记录微博加载的位置
     Long statusIndex;
@@ -56,6 +56,8 @@ public class FirstPageFragment extends Fragment {
         }
 
     }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -83,10 +85,11 @@ public class FirstPageFragment extends Fragment {
         }.run();
 
         if (statusAdapter == null) {
-            statusAdapter = new MyStatusAdapter(getActivity(), firstData);
+            statusAdapter = new StatusAdapter(getActivity(), firstData);
         }
         listView_first.setAdapter(statusAdapter);
         listView_first.setOnItemClickListener(new FirstListViewListener());
+
         return v;
     }
 
@@ -100,7 +103,7 @@ public class FirstPageFragment extends Fragment {
 
         ArrayList<Status> newData = (ArrayList<Status>) Status.findWithQuery(
                 Status.class,
-                "select * from status where type = 2 and id >" + statusIndex + " limit 20");
+                "select * from status where type = 2 and id >=" + statusIndex + " limit 20");
 
         for (int i = 0; i < newData.size(); i++) {
             Status status = newData.get(i);
@@ -181,6 +184,7 @@ public class FirstPageFragment extends Fragment {
             startActivity(intent);
         }
     }
+
 
 
 }
