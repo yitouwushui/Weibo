@@ -220,38 +220,9 @@ public class MainActivity extends AppCompatActivity {
         discoveryFragment.freshen();
     }
 
-    BroadcastReceiver receiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            String action = intent.getAction();
-            switch (action) {
-                case App.ACTION_TRANLATE:
-                    loadTranlate(intent);
-                    break;
-                case App.ACTION_COMMENT:
-                    loadComment(intent);
-                    break;
-            }
-        }
-    };
-
-    /**
-     * 修改主页面评论数
-     */
-    private void loadComment(Intent intent) {
-        String strId = intent.getStringExtra(App.ACTION_TRANLATE_STATUS_IDSTR);
-        String input = intent.getStringExtra(App.ACTION_UPDATE_INPUT);
 
 
-    }
 
-    /**
-     * 转发
-     */
-    private void loadTranlate(Intent intent) {
-
-//        NetQueryImpl.getInstance(getContext()).repostsStatusQuery();
-    }
 
     /**
      * 通知消息

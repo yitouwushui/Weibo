@@ -1,11 +1,14 @@
 package com.yitouwushui.weibo.main;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -57,7 +60,16 @@ public class FirstPageFragment extends Fragment {
 
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
 
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(App.ACTION_COMMENT);
+        filter.addAction(App.ACTION_TRANLATE);
+
+        LocalBroadcastManager.getInstance(getContext()).registerReceiver(receiver, filter);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -164,12 +176,21 @@ public class FirstPageFragment extends Fragment {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            if (msg.what == App.MESSAGE_FRIENDS_STATUS) {
-                getNewData();
+            switch (msg.what) {
+                case App.MESSAGE_FRIENDS_STATUS:
+                    getNewData();
+                    break;
+                case App.MESSAGE_COMMENTS_STATUS_SUCCESS:
+
+                    break;
             }
+
         }
     };
 
+    /**
+     * 选项监听
+     */
     public class FirstListViewListener
             implements android.widget.AdapterView.OnItemClickListener {
 
@@ -185,6 +206,38 @@ public class FirstPageFragment extends Fragment {
         }
     }
 
+    /**
+     * 修改主页面评论数
+     */
+    private void loadComment(Intent intent) {
+        String strId = intent.getStringExtra(App.ACTION_TRANLATE_STATUS_IDSTR);
+        String input = intent.getStringExtra(App.ACTION_UPDATE_INPUT);
+
+        NetQueryImpl.getInstance(getContext()).commentStatus(handler, strId, input);
+    }
+
+    /**
+     * 转发
+     */
+    private void loadTranlate(Intent intent) {
+
+//        NetQueryImpl.getInstance(getContext()).repostsStatusQuery();
+    }
+
+    BroadcastReceiver receiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            switch (action) {
+                case App.ACTION_TRANLATE:
+                    loadTranlate(intent);
+                    break;
+                case App.ACTION_COMMENT:
+                    loadComment(intent);
+                    break;
+            }
+        }
+    };
 
 
 }

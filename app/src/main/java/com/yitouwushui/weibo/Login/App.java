@@ -77,19 +77,28 @@ public class App {
     /**
      * 更新微博成功
      */
-    public static int MESSAGE_UPDATE_STATUS_SUCCESS = 9;
+    public static final int MESSAGE_UPDATE_STATUS_SUCCESS = 9;
 
     /**
      * 更新微博失败
      */
-    public static int MESSAGE_UPDATE_STATUS_FAIL = 10;
+    public static final int MESSAGE_UPDATE_STATUS_FAIL = 10;
 
     /**
      * 更新微博请求码
      */
-    public static int ACTION_REQUEST_UPDATE = 11;
+    public static final int ACTION_REQUEST_UPDATE = 11;
 
 
+    /**
+     * 评论微博动作成功
+     */
+    public static final int MESSAGE_COMMENTS_STATUS_SUCCESS = 12;
+
+    /**
+     * 评论微博动作失败
+     */
+    public static final int MESSAGE_COMMENTS_STATUS_FAIL = 13;
     /**
      * 转发
      */
@@ -102,15 +111,16 @@ public class App {
      * 评论
      */
     public static final String ACTION_COMMENT = "ACTION_COMMENT";
+
     /**
      * 评论微博id
      */
     public static final String ACTION_COMMENT_STATUS_IDSTR = "ACTION_COMMENT_STATUS_IDSTR";
-
     /**
      * 关注和粉丝用户Id
      */
     public static final String ACTION_USERID = "ACTION_USERID";
+
     /**
      * 关注和粉丝的标题
      */
@@ -130,15 +140,5 @@ public class App {
      * 更新微博内容
      */
     public static final String ACTION_UPDATE_INPUT = "ACTION_UPDATE_INPUT";
-
-    /**
-     * 评论微博动作成功
-     */
-    public static int MESSAGE_COMMENTS_STATUS_SUCCESS = 12;
-
-    /**
-     * 评论微博动作失败
-     */
-    public static int MESSAGE_COMMENTS_STATUS_FAIL = 13;
 }
 
