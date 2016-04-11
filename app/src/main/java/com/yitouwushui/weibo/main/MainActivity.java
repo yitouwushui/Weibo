@@ -82,10 +82,10 @@ public class MainActivity extends AppCompatActivity {
                         setVisibility(messageFragment);
                         break;
                     case 2:
-                        IntentUtils.startUpdate(MainActivity.this);
+//                        IntentUtils.startUpdate(MainActivity.this);
                         Intent intent = new Intent(MainActivity.this, UpdateActivity.class);
                         intent.putExtra(App.ACTION_UPDATE_TITLE, "发微博");
-                        MainActivity.this.startActivityForResult(intent, App.ACTION_REQUEST_UPDATE);
+                        startActivityForResult(intent, App.ACTION_REQUEST_UPDATE);
                         break;
                     case 3:
                         setVisibility(discoveryFragment);

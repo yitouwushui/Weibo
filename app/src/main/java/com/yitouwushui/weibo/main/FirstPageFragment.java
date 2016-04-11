@@ -182,6 +182,8 @@ public class FirstPageFragment extends Fragment {
                     break;
                 case App.MESSAGE_COMMENTS_STATUS_SUCCESS:
 
+                    Toast.makeText(getContext(), "评论成功", Toast.LENGTH_SHORT).show();
+
                     break;
             }
 

@@ -156,6 +156,8 @@ public class WeiboPageActivity extends AppCompatActivity {
         mListView = mRefreshView.getRefreshableView();
         // 添加头选项
         header = getLayoutInflater().inflate(R.layout.activity_pager_header, null);
+
+
         mListView.addHeaderView(header);
         initHeader(header);
         mAdapter = new WBPageAdapter(this, commentsList);
@@ -268,7 +270,7 @@ public class WeiboPageActivity extends AppCompatActivity {
         // 获得图片ArrayList
         String[] pic_urls = Util.getPicList(status.getBmiddle_pic());
 
-        // 因为截断为空的时候会默认给一个为""的字符串,给索引为0的伟中
+        // 因为截断为空的时候会默认给一个为""的字符串,给索引为0的数组中
         if (pic_urls[0] != "") {
             int i = 0, leng = pic_urls.length;
             for (; i < pic_urls.length; i++) {

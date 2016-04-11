@@ -31,18 +31,19 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
+
         // 给请求队列赋值
         netQuery = NetQueryImpl.getInstance(LoginActivity.this);
-        currentID = getPreferences(MODE_PRIVATE).getInt(App.CURRENT_ID, 0);
-        accessToken = AccessToken.findById(AccessToken.class, currentID);
+        currentID = getPreferences(MODE_PRIVATE).getInt(App.CURRENT_ID, 1);
 //        boolean isFirst = getPreferences(MODE_APPEND).getBoolean("isFirst", true);
+        accessToken = AccessToken.findById(AccessToken.class, currentID);
         if (accessToken == null) {
             webView = (WebView) findViewById(R.id.webView);
             webView.getSettings().setJavaScriptEnabled(true);// 启动JS
             webView.getSettings().setSupportZoom(false);// 支持缩放
 //        webView.getSettings().setBlockNetworkImage(false);// 是否加载图片
 //            isFirst = getPreferences(MODE_PRIVATE).edit().putBoolean("isFirst", false).commit();
-            currentID += 1;
             getPreferences(MODE_PRIVATE).edit().putInt(App.CURRENT_ID, currentID).commit();
             NetQueryImpl.accessTokenID = currentID;
             webView.getSettings().setDisplayZoomControls(true);
